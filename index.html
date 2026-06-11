@@ -89,14 +89,13 @@ html{scrollbar-gutter:stable}
 @keyframes timerPulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 /* HERO */
-#hero{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;
-  position:relative;overflow:hidden;padding:80px 60px;
-  background:radial-gradient(ellipse 65% 55% at 10% 50%,rgba(255,124,42,.08) 0%,transparent 55%),
-    radial-gradient(ellipse 50% 50% at 92% 25%,rgba(45,156,219,.07) 0%,transparent 50%),
-    radial-gradient(ellipse 40% 40% at 50% 90%,rgba(155,81,224,.05) 0%,transparent 60%),var(--bg);}
+#hero{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 65% 55% at 15% 50%,rgba(255,124,42,.07) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 50% at 88% 30%,rgba(45,156,219,.06) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 90%,rgba(155,81,224,.04) 0%,transparent 60%),var(--bg);}
 .hero-grid{display:none}
-.hero-inner{max-width:1440px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.hero-inner{max-width:760px;margin:0 auto;width:100%;text-align:center;padding:96px 60px;}
 .hero-chip{display:inline-flex;align-items:center;gap:8px;
   background:rgba(255,124,42,.08);border:1px solid rgba(255,124,42,.2);
   border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;
@@ -106,8 +105,15 @@ html{scrollbar-gutter:stable}
 .hero-h em{font-style:normal;
   background:linear-gradient(135deg,var(--m1) 0%,var(--no) 50%,var(--m3) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:15px;color:var(--dm);line-height:1.8;margin-bottom:36px;max-width:420px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-sub{font-size:16px;color:var(--dm);line-height:1.8;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:0;
+  background:var(--card);border:1px solid var(--b);border-radius:16px;
+  padding:0;overflow:hidden;box-shadow:var(--shadow-sm);max-width:420px;margin:0 auto;}
+.hero-stat{flex:1;padding:20px 24px;text-align:center}
+.hero-stat:not(:last-child){border-right:1px solid var(--b)}
+.hero-stat-val{display:block;font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:5px}
+.hero-stat-lbl{display:block;font-size:11px;color:var(--dm);font-weight:600;letter-spacing:.02em}
 .btn-p{display:inline-flex;align-items:center;gap:9px;
   background:linear-gradient(135deg,var(--m1),var(--no));color:#fff;border:none;
   border-radius:12px;padding:14px 28px;font-size:14px;font-weight:800;cursor:pointer;
@@ -154,7 +160,13 @@ html{scrollbar-gutter:stable}
 .dcard-size{font-size:12px;color:var(--dm);font-weight:600}
 
 /* 71 STRATEGY */
-.strat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.strat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.strat-more{display:none;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.strat-more.open{display:grid}
+.strat-toggle{background:none;border:1px solid var(--b);color:var(--dm);border-radius:10px;
+  padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+  transition:all .15s;margin-bottom:24px;}
+.strat-toggle:hover{background:var(--hover-bg);color:var(--tx)}
 .scard{background:var(--card);border:1px solid var(--b);border-radius:18px;
   padding:28px;transition:all .2s;position:relative;overflow:hidden;}
 .scard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
@@ -261,6 +273,14 @@ html{scrollbar-gutter:stable}
   border-radius:7px;padding:5px 10px;color:var(--tx);line-height:1.45;}
 .er-empty{grid-column:1/-1;text-align:center;padding:60px 0;font-size:15px;color:var(--dm);display:none}
 .er-empty.show{display:block}
+.er-card.er-collapsed.hidden{display:none}
+.er-card.hidden{display:none}
+.er-card.er-search-visible{display:block!important}
+.er-show-more{grid-column:1/-1;display:flex;justify-content:center;padding:4px 0}
+.er-show-more-btn{background:var(--card);border:1px solid var(--b);color:var(--dm);
+  border-radius:10px;padding:10px 24px;font-size:13px;font-weight:700;
+  cursor:pointer;font-family:inherit;transition:all .15s;}
+.er-show-more-btn:hover{background:var(--card2);color:var(--tx);border-color:var(--bb)}
 
 /* SURVIVAL QUIZ */
 #quiz{background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(155,81,224,.09) 0%,transparent 60%),var(--bg);}
@@ -322,31 +342,56 @@ html{scrollbar-gutter:stable}
 .qi-next.show{display:flex}
 .qi-next:hover{transform:translateX(4px)}
 /* score popup */
-.sc-pop{position:fixed;font-size:20px;font-weight:900;color:var(--ok);
+.sc-pop{position:fixed;font-size:18px;font-weight:900;color:var(--m1);
   pointer-events:none;z-index:999;animation:floatUp .8s ease forwards;
-  text-shadow:0 0 16px rgba(0,229,160,.5);}
+  text-shadow:0 2px 6px rgba(0,0,0,.18);}
 /* result */
 #quiz-result{display:none}
 #quiz-result.on{display:block;animation:popIn .4s ease}
-.qr-wrap{max-width:640px;margin:0 auto;text-align:center}
-.qr-badge{display:inline-flex;align-items:center;justify-content:center;
-  width:88px;height:88px;border-radius:50%;font-size:40px;font-weight:900;
-  border:3px solid;margin-bottom:16px;animation:popIn .5s ease;}
-.qr-title{font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
-.qr-desc{font-size:15px;color:var(--dm);line-height:1.7;margin-bottom:32px}
-.qr-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.qr-stat{text-align:center}
-.qr-sn{display:block;font-size:32px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:3px}
-.qr-sl{font-size:11px;color:var(--dm)}
-.qr-analysis{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;text-align:left}
-.qr-item{background:var(--card);border:1px solid var(--b);border-radius:13px;padding:16px 18px}
-.qr-item-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dm);margin-bottom:6px}
-.qr-item-val{font-size:14px;font-weight:700;line-height:1.45}
-.qr-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-retry{display:inline-flex;align-items:center;gap:7px;background:var(--card2);
-  border:1.5px solid var(--bb);color:var(--tx);border-radius:12px;padding:13px 24px;
-  font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;}
-.btn-retry:hover{transform:translateY(-2px);background:var(--card2)}
+.qr-wrap{max-width:640px;margin:0 auto}
+/* summary card */
+.qr-summary{background:var(--card);border:1px solid var(--b);border-radius:20px;
+  padding:28px;margin-bottom:16px;box-shadow:var(--shadow-sm);animation:popIn .5s ease}
+.qr-summary-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.qr-title-area{flex:1}
+.qr-title{font-size:clamp(20px,3.5vw,28px);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:8px}
+.qr-reason{font-size:13px;color:var(--dm);line-height:1.65}
+.qr-score-area{text-align:center;flex-shrink:0}
+.qr-score-val{font-size:48px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.qr-score-lbl{font-size:11px;color:var(--dm);margin-bottom:8px}
+.qr-pass-badge{font-size:12px;font-weight:800;padding:5px 12px;border-radius:20px}
+/* metrics grid */
+.qr-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.qr-metric{background:var(--card);border:1px solid var(--b);border-radius:14px;
+  padding:16px 12px;text-align:center}
+.qr-metric-val{display:block;font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:5px}
+.qr-metric-lbl{display:block;font-size:10px;color:var(--dm);font-weight:600}
+/* category breakdown */
+.qr-cats{background:var(--card);border:1px solid var(--b);border-radius:16px;
+  padding:20px;margin-bottom:16px}
+.qr-cats-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dm);margin-bottom:14px}
+.qr-cat-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.qr-cat-row:last-child{margin-bottom:0}
+.qr-cat-name{font-size:12px;font-weight:700;width:90px;flex-shrink:0}
+.qr-cat-bar-wrap{flex:1;height:6px;background:var(--track);border-radius:3px;overflow:hidden}
+.qr-cat-bar{height:100%;border-radius:3px;transition:width .5s ease}
+.qr-cat-stat{font-size:11px;font-weight:700;width:50px;text-align:right;flex-shrink:0}
+/* feedback */
+.qr-feedback{background:var(--card2);border:1px solid var(--b);border-radius:16px;
+  padding:20px;margin-bottom:20px}
+.qr-fb-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.qr-fb-item:last-child{margin-bottom:0}
+.qr-fb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.qr-fb-txt{font-size:13px;color:var(--dm);line-height:1.65}
+/* buttons */
+.qr-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.btn-retry{display:inline-flex;align-items:center;gap:7px;background:var(--card);
+  border:1.5px solid var(--b);color:var(--dm);border-radius:12px;padding:12px 20px;
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;text-decoration:none;}
+.btn-retry:hover{transform:translateY(-2px);background:var(--card2);border-color:var(--bb);color:var(--tx)}
+.btn-retry-weak{background:rgba(155,81,224,.08);border-color:rgba(155,81,224,.3);color:var(--m3)}
+.btn-retry-weak:hover{background:rgba(155,81,224,.14)!important}
+@media(max-width:600px){.qr-metrics{grid-template-columns:repeat(2,1fr)}.qr-summary-top{flex-direction:column}}
 
 /* CLASS PROCESS */
 #process{border-top:1px solid var(--b)}
@@ -382,12 +427,13 @@ html{scrollbar-gutter:stable}
 }
 @media(max-width:720px){
   .section{padding:72px 24px}
+  .hero-inner{padding:72px 24px}
   .diff-grid,.strat-grid,.ps-wrap{grid-template-columns:1fr}
   .er-grid{grid-template-columns:1fr 1fr}
   .nav{padding:0 20px}
   .nav-logo-text{display:none}
-  .qr-analysis{grid-template-columns:1fr}
   .time-alloc{grid-template-columns:1fr}
+  .strat-grid,.strat-more{grid-template-columns:1fr}
 }
 @media(max-width:480px){.er-grid{grid-template-columns:1fr}}
 
@@ -529,11 +575,11 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
     </a>
     <div class="nav-links">
       <a class="nav-link" href="#mission">Mission</a>
-      <a class="nav-link" href="#difficulty">Difficulty</a>
-      <a class="nav-link" href="#strategy">71 Strategy</a>
+      <a class="nav-link" href="#quiz">Quiz</a>
+      <a class="nav-link" href="#strategy">Strategy</a>
       <a class="nav-link" href="#er">ER</a>
-      <a class="nav-link nav-cta" href="#quiz">Survival Quiz →</a>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
+      <a class="nav-link" href="#process">Roadmap</a>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
   </div>
 </nav>
@@ -541,36 +587,26 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
 <!-- HERO -->
 <section id="hero" class="section" style="padding:0">
   <div class="hero-grid"></div>
-  <div class="hero-inner" style="padding:80px 60px;max-width:1440px;margin:0 auto;width:100%">
-    <div>
-      <div class="hero-chip"><span class="hero-dot"></span>GTQi 1급 합격 전략</div>
-      <h1 class="hero-h">일러스트레이터<br><em>GTQi 합격 전략</em></h1>
-      <p class="hero-sub">시험 전략, 단축키, 미션 훈련, 응급처치까지<br>GTQi 1급 합격에 필요한 모든 것을 한 곳에.</p>
-      <div class="hero-btns">
-        <a class="btn-p" href="#quiz">Survival Quiz 시작 →</a>
-        <a class="btn-s" href="#mission">미션 훈련 시작</a>
-      </div>
+  <div class="hero-inner">
+    <div class="hero-chip"><span class="hero-dot"></span>GTQi 1급 합격 전략</div>
+    <h1 class="hero-h">GTQi<br><em>Survival Lab</em></h1>
+    <p class="hero-sub">시험 전략, 단축키, 미션 훈련, 응급처치까지<br>GTQi 1급 합격에 필요한 모든 것.</p>
+    <div class="hero-btns">
+      <a class="btn-p" href="#quiz">Survival Quiz 시작 →</a>
+      <a class="btn-s" href="#mission">미션 훈련</a>
     </div>
-    <div class="hero-cards">
-      <div class="hcard">
-        <div class="hcard-ico" style="background:rgba(255,124,42,.1)">🎯</div>
-        <div class="hcard-lbl">합격 기준</div>
-        <div class="hcard-val"><span style="color:var(--m1)">71점</span> / 100점</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-val" style="color:var(--m2)">90분</span>
+        <span class="hero-stat-lbl">시험 시간</span>
       </div>
-      <div class="hcard">
-        <div class="hcard-ico" style="background:rgba(45,156,219,.1)">⏱</div>
-        <div class="hcard-lbl">시험 시간</div>
-        <div class="hcard-val"><span style="color:var(--m2)">90분</span> · 3문제</div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">3문제</span>
+        <span class="hero-stat-lbl">출제 문항</span>
       </div>
-      <div class="hcard">
-        <div class="hcard-ico" style="background:rgba(155,81,224,.1)">📋</div>
-        <div class="hcard-lbl">출제 유형</div>
-        <div class="hcard-val" style="font-size:13px">BI · 패키지 · <span style="color:var(--m3)">광고</span></div>
-      </div>
-      <div class="hcard">
-        <div class="hcard-ico" style="background:rgba(0,229,160,.1)">📅</div>
-        <div class="hcard-lbl">수업 커리큘럼</div>
-        <div class="hcard-val"><span style="color:var(--ok)">20회차</span></div>
+      <div class="hero-stat">
+        <span class="hero-stat-val" style="color:var(--m1)">71점</span>
+        <span class="hero-stat-lbl">합격 기준</span>
       </div>
     </div>
   </div>
@@ -615,12 +651,15 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
     <h2 class="sec-title">71점 생존 전략</h2>
     <p class="sec-desc">GTQi 1급은 100점을 목표로 완벽하게 그리는 시험이 아니라, 제한시간 안에 감점 위험을 줄이고 배점 높은 조건을 챙겨 71점 이상을 확보하는 시험입니다.</p>
     <div class="strat-grid">
-      <div class="scard"><div class="scard-num">01</div><div class="scard-name">3번 → 2번 → 1번 순서 추천</div><div class="scard-desc">배점이 큰 문제부터 먼저 작업해 점수를 확보합니다. 40점짜리부터 시작하세요.</div></div>
-      <div class="scard"><div class="scard-num">02</div><div class="scard-name">시간 배분 기록</div><div class="scard-desc">시험지에 문제별 종료 시간을 직접 적어두고 작업합니다. 감각이 아닌 숫자로 관리하세요.</div></div>
-      <div class="scard"><div class="scard-num">03</div><div class="scard-name">디테일 버리기</div><div class="scard-desc">시간이 부족하면 도형 디테일보다 효과, 브러시, 조건 충족을 우선합니다. 완성도보다 항목 수.</div></div>
-      <div class="scard"><div class="scard-num">04</div><div class="scard-name">효과 우선 작업</div><div class="scard-desc">오브젝트를 완벽하게 그리기보다 Brush, Effect, Clipping Mask 등 배점 요소를 먼저 챙깁니다.</div></div>
-      <div class="scard"><div class="scard-num">05</div><div class="scard-name">모의 테스트에서 많이 실패하기</div><div class="scard-desc">테스트에서 실수해야 개인별 약점을 정확히 찾을 수 있습니다. 틀림이 곧 학습입니다.</div></div>
-      <div class="scard"><div class="scard-num">06</div><div class="scard-name">단축키 암기</div><div class="scard-desc">대지 만들기, 클리핑 마스크, 앞/뒤 보내기, 펜툴, 개체 고정 등은 반드시 외워 시간을 줄입니다.</div></div>
+      <div class="scard"><div class="scard-num">01</div><div class="scard-name">100점이 아닌 71점을 목표로</div><div class="scard-desc">완벽하게 완성하는 시험이 아닙니다. 71점 이상이면 합격. 감점을 줄이는 것이 핵심입니다.</div></div>
+      <div class="scard"><div class="scard-num">02</div><div class="scard-name">3번 → 2번 → 1번 순서</div><div class="scard-desc">배점 높은 3번(40점)부터 시작해 점수를 확보하세요. 1번(25점)은 마지막에 남은 시간으로.</div></div>
+      <div class="scard"><div class="scard-num">03</div><div class="scard-name">디테일보다 조건·효과 먼저</div><div class="scard-desc">시간이 부족하면 도형 디테일을 버리세요. Brush, Effect, Clipping Mask 등 채점 항목을 먼저.</div></div>
+    </div>
+    <button class="strat-toggle" id="strat-toggle" onclick="toggleStrat()">+ 추가 전략 3가지 보기</button>
+    <div class="strat-more" id="strat-more">
+      <div class="scard"><div class="scard-num">04</div><div class="scard-name">시간 배분 숫자로 기록</div><div class="scard-desc">시험지에 문제별 종료 시간을 직접 적어두고 작업합니다. 감각이 아닌 숫자로 관리하세요.</div></div>
+      <div class="scard"><div class="scard-num">05</div><div class="scard-name">모의 테스트에서 실패하기</div><div class="scard-desc">테스트에서 실수해야 개인별 약점을 정확히 찾을 수 있습니다. 틀림이 곧 학습입니다.</div></div>
+      <div class="scard"><div class="scard-num">06</div><div class="scard-name">단축키 암기</div><div class="scard-desc">클리핑 마스크(Ctrl+7), 앞/뒤 보내기, 펜툴, Smart Guides(Ctrl+U) 등은 반드시 외워두세요.</div></div>
     </div>
     <!-- Time Allocation -->
     <div style="margin-top:8px">
@@ -682,14 +721,15 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
       <div class="er-card" data-tags="격자 그리드 점선 배경 생겼"><div class="er-q">갑자기 격자가 생겼어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + " 또는 보기 › 격자 숨기기</span></div></div>
       <div class="er-card" data-tags="대지 각도 기울기 아트보드 돌아"><div class="er-q">대지 각도가 돌아갔어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">ESC</span></div></div>
       <div class="er-card" data-tags="안내선 가이드 선 숨김 안보여"><div class="er-q">안내선이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + ; 또는 보기 › 안내선 보이기</span></div></div>
-      <div class="er-card" data-tags="도구 툴박스 오브젝트 패널 안보여 박스"><div class="er-q">오브젝트 툴 박스가 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + B</span></div></div>
-      <div class="er-card" data-tags="가이드 스마트 자석 붙기 snap"><div class="er-q">스마트 가이드가 꺼졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + U (Smart Guides)</span></div></div>
-      <div class="er-card" data-tags="핸들 앵커 포인트 방향선 안보여"><div class="er-q">핸들이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + H</span></div></div>
-      <div class="er-card" data-tags="핸들 방향선 패스 엣지 안보여 디렉션"><div class="er-q">디렉션 라인이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + H (Show Edges)</span></div></div>
-      <div class="er-card" data-tags="색 컬러 회색 그레이 CMYK 바뀌 단축키"><div class="er-q">색이 회색으로 바뀌었어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Color 패널 메뉴 → CMYK로 변경</span></div></div>
-      <div class="er-card" data-tags="캡처 스크린샷 윈도우 화면 찍기"><div class="er-q">윈도우에서 창만 캡처하기</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Win + Shift + S</span></div></div>
-      <div class="er-card" data-tags="저장 메모리 오류 GPU 에러 안됩 단축키"><div class="er-q">메모리 오류로 저장이 안 됩니다</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + K → GPU Performance 체크 해제</span></div></div>
-      <div class="er-card" data-tags="초기화 리셋 설정 실행 재시작 단축키"><div class="er-q">일러스트레이터 초기화</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Alt + Shift 누른 채 실행</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="도구 툴박스 오브젝트 패널 안보여 박스"><div class="er-q">오브젝트 툴 박스가 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + B</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="가이드 스마트 자석 붙기 snap"><div class="er-q">스마트 가이드가 꺼졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + U (Smart Guides)</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="핸들 앵커 포인트 방향선 안보여"><div class="er-q">핸들이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + H</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="핸들 방향선 패스 엣지 안보여 디렉션"><div class="er-q">디렉션 라인이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + H (Show Edges)</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="색 컬러 회색 그레이 CMYK 바뀌 단축키"><div class="er-q">색이 회색으로 바뀌었어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Color 패널 메뉴 → CMYK로 변경</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="캡처 스크린샷 윈도우 화면 찍기"><div class="er-q">윈도우에서 창만 캡처하기</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Win + Shift + S</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="저장 메모리 오류 GPU 에러 안됩 단축키"><div class="er-q">메모리 오류로 저장이 안 됩니다</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + K → GPU Performance 체크 해제</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="초기화 리셋 설정 실행 재시작 단축키"><div class="er-q">일러스트레이터 초기화</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Alt + Shift 누른 채 실행</span></div></div>
+      <div class="er-show-more" id="er-show-more"><button class="er-show-more-btn" onclick="toggleERAll()">전체 보기 (14개) ↓</button></div>
       <div class="er-empty" id="er-empty">해당 키워드에 맞는 카드가 없습니다.</div>
     </div>
   </div>
@@ -705,7 +745,7 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
     <!-- Start Screen -->
     <div id="quiz-start" class="quiz-start">
       <button class="btn-p" onclick="startQuiz()" style="font-size:17px;padding:18px 48px">퀴즈 시작하기 →</button>
-      <div class="quiz-start-note">25문항 · 문항당 30초 · 목숨 3개 · 키보드 A/B/C/D 지원</div>
+      <div class="quiz-start-note">40문항 · 정답률로 예상 GTQi 점수 계산 · 키보드 A/B/C/D 지원</div>
     </div>
 
     <!-- Quiz Running -->
@@ -713,11 +753,11 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
       <div class="qi-head">
         <div class="qi-info">
           <div class="qi-title" id="qi-title">GTQi Survival Quiz</div>
-          <div class="qi-prog" id="qi-prog">1 / 25</div>
+          <div class="qi-prog" id="qi-prog">1 / 40</div>
         </div>
         <div class="qi-right">
           <div class="qi-hp" id="qi-hp">❤️❤️❤️</div>
-          <div class="qi-score"><div class="qi-score-label">점수</div><div class="qi-score-val" id="qi-score">0</div></div>
+          <div class="qi-score"><div class="qi-score-label">정답</div><div class="qi-score-val" id="qi-score">0</div></div>
         </div>
       </div>
       <div class="qi-timer-wrap"><div class="qi-timer-bar" id="qi-timer"></div></div>
@@ -734,24 +774,39 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
     <!-- Result -->
     <div id="quiz-result">
       <div class="qr-wrap">
-        <div class="qr-badge" id="qr-badge"></div>
-        <div class="qr-title" id="qr-title"></div>
-        <div class="qr-desc" id="qr-desc"></div>
-        <div class="qr-stats">
-          <div class="qr-stat"><span class="qr-sn" id="qr-correct" style="color:var(--ok)"></span><div class="qr-sl">정답</div></div>
-          <div class="qr-stat"><span class="qr-sn" id="qr-score" style="color:var(--co)"></span><div class="qr-sl">점수</div></div>
-          <div class="qr-stat"><span class="qr-sn" id="qr-rate" style="color:var(--m2)"></span><div class="qr-sl">정답률</div></div>
+        <!-- 상단 요약 카드 -->
+        <div class="qr-summary" id="qr-summary">
+          <div class="qr-summary-top">
+            <div class="qr-title-area">
+              <div class="qr-title" id="qr-title"></div>
+              <div class="qr-reason" id="qr-reason"></div>
+            </div>
+            <div class="qr-score-area">
+              <div class="qr-score-val" id="qr-score-val"></div>
+              <div class="qr-score-lbl">예상 점수</div>
+              <div class="qr-pass-badge" id="qr-pass-badge"></div>
+            </div>
+          </div>
         </div>
-        <div class="qr-analysis">
-          <div class="qr-item"><div class="qr-item-label">선택 난이도</div><div class="qr-item-val" id="qr-diff"></div></div>
-          <div class="qr-item"><div class="qr-item-label">감점 위험도</div><div class="qr-item-val" id="qr-risk"></div></div>
-          <div class="qr-item"><div class="qr-item-label">가장 약한 영역</div><div class="qr-item-val" id="qr-weak"></div></div>
-          <div class="qr-item"><div class="qr-item-label">추천 복습 스킬</div><div class="qr-item-val" id="qr-review"></div></div>
-          <div class="qr-item" style="grid-column:1/-1"><div class="qr-item-label">다음 미션 추천</div><div class="qr-item-val" id="qr-next"></div></div>
+        <!-- 성과 그리드 -->
+        <div class="qr-metrics">
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-correct" style="color:var(--ok)"></span><span class="qr-metric-lbl">정답 수</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-rate" style="color:var(--m2)"></span><span class="qr-metric-lbl">정답률</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-risk" style="color:var(--no)"></span><span class="qr-metric-lbl">감점위험</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-gap" style="color:var(--co)"></span><span class="qr-metric-lbl">합격선까지</span></div>
         </div>
+        <!-- 카테고리 분석 -->
+        <div class="qr-cats" id="qr-cats"></div>
+        <!-- 피드백 -->
+        <div class="qr-feedback" id="qr-feedback"></div>
+        <!-- 액션 -->
         <div class="qr-btns">
           <button class="btn-retry" onclick="restartQuiz()">↺ 다시 도전</button>
-          <button class="btn-retry" onclick="backToStart()">← 처음으로</button>
+          <button class="btn-retry btn-retry-weak" id="btn-weak" onclick="retryWeak()">약점만 다시 풀기</button>
+          <button class="btn-retry" onclick="location.href='#er'">ER 보기 →</button>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="btn-retry" style="font-size:12px;padding:8px 18px" onclick="backToStart()">← 처음으로</button>
         </div>
       </div>
     </div>
@@ -865,18 +920,34 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
 
 <script>
 /* ── ER 검색 ── */
+let erAllShown=false;
 function filterER(v){
   const q=v.trim().toLowerCase();
   const cards=document.querySelectorAll('#er-grid .er-card');
   let vis=0;
   cards.forEach(c=>{
     const src=(c.dataset.tags||'')+' '+(c.querySelector('.er-q')||{textContent:''}).textContent;
-    const ok=!q||src.toLowerCase().includes(q);
-    c.classList.toggle('hidden',!ok);
-    if(ok)vis++;
+    const match=!q||src.toLowerCase().includes(q);
+    const collapsed=c.classList.contains('er-collapsed')&&!erAllShown;
+    if(q){
+      c.classList.toggle('hidden',!match);
+      c.classList.toggle('er-search-visible',match&&c.classList.contains('er-collapsed'));
+    } else {
+      c.classList.remove('er-search-visible');
+      c.classList.toggle('hidden',collapsed);
+    }
+    if(match&&(!collapsed||q))vis++;
   });
+  const sm=document.getElementById('er-show-more');
+  if(sm)sm.style.display=q?'none':'flex';
   document.getElementById('er-empty').classList.toggle('show',vis===0);
   document.querySelectorAll('.er-chip').forEach(ch=>ch.classList.remove('on'));
+}
+function toggleERAll(){
+  erAllShown=!erAllShown;
+  document.querySelectorAll('#er-grid .er-card.er-collapsed').forEach(c=>c.classList.toggle('hidden',!erAllShown));
+  const btn=document.querySelector('.er-show-more-btn');
+  if(btn)btn.textContent=erAllShown?'접기 ↑':'전체 보기 (14개) ↓';
 }
 function chipFilter(kw){
   document.querySelector('.er-search').value=kw;
@@ -884,6 +955,14 @@ function chipFilter(kw){
   document.querySelectorAll('.er-chip').forEach(ch=>{
     ch.classList.toggle('on',kw===''?ch.textContent==='전체':ch.textContent===kw);
   });
+}
+
+/* ── Strategy toggle ── */
+function toggleStrat(){
+  const m=document.getElementById('strat-more');
+  const b=document.getElementById('strat-toggle');
+  const open=m.classList.toggle('open');
+  b.textContent=open?'− 접기':'+ 추가 전략 3가지 보기';
 }
 
 /* ── Class Process ── */
@@ -906,125 +985,216 @@ document.querySelectorAll('section[id]').forEach(s=>io.observe(s));
    SURVIVAL QUIZ
 ═══════════════════════════════ */
 const QS=[
+  /* ── save (w:2) ── */
   {q:'시험 종료 3분 전, 파일명이 "홍길동-광고.ai"로 저장되어 있습니다. 어떻게 해야 할까요?',
    opts:['그냥 제출한다','수험번호_성명_수험과목.ai 형식으로 다시 저장','파일명은 채점에 영향 없다','새 파일로 처음부터 저장'],
-   ans:1,cat:'save',tip:'파일명: 수험번호_성명_수험과목.ai',
+   correct:'수험번호_성명_수험과목.ai 형식으로 다시 저장',cat:'save',w:2,tip:'파일명: 수험번호_성명_수험과목.ai',
    ex:'GTQi 시험은 파일명이 채점 기준입니다. 잘못된 파일명은 감점 또는 실격 처리될 수 있어요.'},
-  {q:'화면에서 색상이 모두 사라지고 흰 선과 검은 선만 보입니다. 빠른 해결 방법은?',
-   opts:['Ctrl+Z로 되돌리기','Ctrl+Y (Outline View 해제)','Tab으로 패널 복구','ESC'],
-   ans:1,cat:'shortcut',tip:'Ctrl+Y: Outline/Preview 전환',
-   ex:'Outline Mode(Ctrl+Y)로 전환되면 오브젝트가 윤곽선만 보입니다. 다시 Ctrl+Y를 눌러 Preview로 돌아오세요.'},
-  {q:'색상 패널에서 색을 바꾸려는데 회색만 적용됩니다. 원인은?',
-   opts:['레이어가 잠겨있음','Stroke가 선택된 상태','Grayscale 모드로 설정되어 있음','Effect가 적용된 상태'],
-   ans:2,cat:'shortcut',tip:'Color 패널 메뉴 → CMYK로 변경',
-   ex:'Color 패널 우측 상단 메뉴를 클릭해 Grayscale이 선택되어 있다면 CMYK로 변경하면 됩니다.'},
-  {q:'GTQi 1급 합격 최저 점수는?',
-   opts:['60점','70점','71점','75점'],
-   ans:2,cat:'strategy',tip:'합격 기준: 71점 이상',
-   ex:'GTQi 1급은 100점 만점 중 71점 이상이면 합격입니다. 완벽하게 그리기보다 감점을 줄이는 전략이 중요해요.'},
-  {q:'실전에서 3문제를 푸는 권장 순서는?',
-   opts:['1번 → 2번 → 3번','2번 → 1번 → 3번','3번 → 2번 → 1번','느낌대로'],
-   ans:2,cat:'strategy',tip:'배점 높은 3번(40점)부터 시작',
-   ex:'3번 광고디자인(40점) → 2번 패키지(35점) → 1번 BI·CI(25점) 순서로 배점 큰 문제부터 풀면 시간 내에 점수를 확보하기 유리합니다.'},
-  {q:'Clipping Mask 적용 시 마스크 오브젝트(마스크 역할)의 위치는?',
-   opts:['가장 아래 레이어','가장 위(최상단)','어디든 무관','별도 레이어 필요'],
-   ans:1,cat:'skill',tip:'마스크 오브젝트는 반드시 최상단',
-   ex:'Clipping Mask에서 마스크로 사용할 오브젝트는 반드시 가장 위에 있어야 합니다. Ctrl+7로 적용.'},
-  {q:'GTQi 파일 저장 형식으로 올바른 것은?',
-   opts:['.pdf','.psd','.ai','.png'],
-   ans:2,cat:'save',tip:'Adobe Illustrator(.ai) 형식으로 저장',
-   ex:'GTQi 시험 제출 파일은 반드시 .ai(Adobe Illustrator) 형식이어야 합니다.'},
-  {q:'패스파인더에서 앞 도형 형태로 뒤 도형을 잘라내는 기능은?',
-   opts:['Unite','Intersect','Minus Front','Divide'],
-   ans:2,cat:'skill',tip:'Pathfinder > Minus Front',
-   ex:'Minus Front는 앞 도형의 형태대로 뒤 도형을 뚫어냅니다. 클리핑 마스크와 다르게 도형이 실제로 잘려나가요.'},
-  {q:'아트보드 단위를 mm로 바꾸는 경로는?',
-   opts:['View > Rulers','File > Document Setup','Edit > Preferences > Units','Window > Artboards'],
-   ans:2,cat:'save',tip:'Edit > Preferences > Units > Millimeters',
-   ex:'GTQi 시험은 모든 크기를 mm로 지정합니다. Ctrl+K → Units에서 mm로 설정하세요.'},
+  /* ── shortcut (w:1.5) ── */
+  {q:'화면에서 색상이 사라지고 흰 선과 검은 선만 보입니다. 빠른 해결 방법은?',
+   opts:['Ctrl+Z로 되돌리기','Tab으로 패널 복구','Ctrl+Y (Outline View 해제)','ESC'],
+   correct:'Ctrl+Y (Outline View 해제)',cat:'short',w:1.5,tip:'Ctrl+Y: Outline/Preview 전환',
+   ex:'Ctrl+Y로 Outline Mode가 켜진 상태입니다. 다시 Ctrl+Y를 누르면 Preview Mode로 돌아옵니다.'},
+  /* ── cmyk (w:2) ── */
+  {q:'Color 패널에서 색을 바꾸려는데 회색만 적용됩니다. 원인과 해결 방법은?',
+   opts:['레이어가 잠겨있음 — Layer 잠금 해제','Effect가 적용된 상태 — Effect 제거','Grayscale 모드로 설정됨 — Color 패널 메뉴에서 CMYK로 변경','Stroke가 선택된 상태 — Fill 선택'],
+   correct:'Grayscale 모드로 설정됨 — Color 패널 메뉴에서 CMYK로 변경',cat:'cmyk',w:2,tip:'Color 패널 메뉴 → CMYK 선택',
+   ex:'Color 패널 우측 상단 메뉴에서 Grayscale이 선택되어 있으면 CMYK로 변경해야 합니다.'},
+  /* ── strat (w:1.5) ── */
+  {q:'GTQi 1급의 합격 기준 점수는?',
+   opts:['60점 이상','70점 이상','71점 이상','75점 이상'],
+   correct:'71점 이상',cat:'strat',w:1.5,tip:'합격 기준: 71점 이상',
+   ex:'GTQi 1급은 100점 만점 중 71점 이상이면 합격입니다. 완벽보다 감점 방지 전략이 핵심입니다.'},
+  {q:'GTQi 실전에서 권장하는 3문제 풀이 순서는?',
+   opts:['1번 → 2번 → 3번 (문제 번호 순)','3번 → 2번 → 1번 (배점 높은 순)','2번 → 3번 → 1번','쉬운 것부터'],
+   correct:'3번 → 2번 → 1번 (배점 높은 순)',cat:'strat',w:1.5,tip:'3번(40점) → 2번(35점) → 1번(25점)',
+   ex:'배점이 큰 3번부터 풀어 점수를 먼저 확보하고, 25점짜리 1번은 남은 시간에 처리합니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Clipping Mask를 적용할 때 마스크 역할을 하는 오브젝트의 위치는?',
+   opts:['가장 아래 레이어에 배치','레이어 어디든 무관','별도 클리핑 레이어 필요','가장 위(최상단)에 배치'],
+   correct:'가장 위(최상단)에 배치',cat:'skill',w:1,tip:'마스크 오브젝트는 반드시 최상단',
+   ex:'Clipping Mask(Ctrl+7)에서 마스크로 쓸 오브젝트는 반드시 맨 위에 있어야 합니다.'},
+  /* ── save (w:2) ── */
+  {q:'GTQi 시험 제출 파일 형식으로 반드시 지켜야 하는 것은?',
+   opts:['.pdf (PDF 형식)','확장자 없이 제출','.ai (Adobe Illustrator 형식)','.eps 형식'],
+   correct:'.ai (Adobe Illustrator 형식)',cat:'save',w:2,tip:'제출 파일은 반드시 .ai 형식',
+   ex:'GTQi 시험 제출 파일은 .ai 형식이어야 합니다. PNG나 PDF로 저장하면 채점이 불가합니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Pathfinder에서 앞 도형의 형태로 뒤 도형을 잘라내는 기능은?',
+   opts:['Unite','Minus Front','Intersect','Divide'],
+   correct:'Minus Front',cat:'skill',w:1,tip:'Pathfinder > Minus Front',
+   ex:'Minus Front는 앞 도형 모양대로 뒤 도형을 뚫어냅니다. 클리핑 마스크와 달리 실제로 잘려나갑니다.'},
+  /* ── save (w:2) ── */
+  {q:'GTQi 시험에서 아트보드 단위를 mm로 설정하는 경로는?',
+   opts:['View > Rulers > Change to mm','File > Document Setup > Units','Edit > Preferences > Units → Millimeters','Window > Artboards > Units'],
+   correct:'Edit > Preferences > Units → Millimeters',cat:'save',w:2,tip:'Ctrl+K → Units → Millimeters',
+   ex:'Ctrl+K(환경설정) → Units에서 mm로 설정하세요. GTQi는 모든 크기를 mm로 지정합니다.'},
+  /* ── skill (w:1) ── */
   {q:'Drop Shadow 효과를 적용하는 메뉴 경로는?',
-   opts:['Window > Effects','Object > Shadow','Effect > Stylize > Drop Shadow','Filter > Blur > Shadow'],
-   ans:2,cat:'skill',tip:'Effect > Stylize > Drop Shadow',
-   ex:'일러스트레이터에서 Effect 메뉴 → Stylize → Drop Shadow로 그림자를 적용합니다.'},
-  {q:'시간이 부족할 때 가장 먼저 포기해야 할 것은?',
-   opts:['배점 높은 Effect 조건','CMYK 색상 설정','도형의 세밀한 디테일','파일 저장'],
-   ans:2,cat:'strategy',tip:'디테일 버리기 — 조건 충족이 우선',
-   ex:'채점은 디테일의 완성도보다 지정된 기능(Clipping Mask, Effect 등) 적용 여부를 봅니다. 시간이 없으면 디테일을 버리세요.'},
-  {q:'GTQi 제출 파일명 형식으로 올바른 것은?\n(수험번호: 12345678, 이름: 홍길동, 3번 문제)',
-   opts:['홍길동_3번.ai','12345678_홍길동_광고디자인.ai','12345678_홍길동_수험과목.ai','3번_홍길동_제출.ai'],
-   ans:2,cat:'save',tip:'수험번호_성명_수험과목.ai 형식',
-   ex:'수험과목명은 시험지에 명시된 정확한 명칭을 사용해야 합니다. 수험번호_성명_수험과목.ai 형식을 철저히 지키세요.'},
-  {q:'사라진 도구 패널(툴바)을 복구하는 단축키는?',
-   opts:['Ctrl+Z','Ctrl+Y','Tab','F1'],
-   ans:2,cat:'shortcut',tip:'Tab: 패널 전체 표시/숨기기',
-   ex:'Tab을 누르면 모든 패널이 숨겨지거나 다시 나타납니다. 도구가 사라졌다면 Tab을 한 번 눌러보세요.'},
-  {q:'Smart Guides를 켜는 단축키는?',
-   opts:['Ctrl+G','Ctrl+;','Ctrl+U','Ctrl+R'],
-   ans:2,cat:'shortcut',tip:'Ctrl+U: Smart Guides 켜기/끄기',
-   ex:'Smart Guides(Ctrl+U)는 오브젝트 배치 시 자동 정렬 가이드를 보여줍니다. 꼭 켜두세요.'},
-  {q:'Blend Tool에서 단계 수를 16으로 설정하는 메뉴는?',
-   opts:['Effect > Blend','Object > Blend > Blend Options > Specified Steps','Window > Blend','Edit > Blend Settings'],
-   ans:1,cat:'skill',tip:'Object > Blend > Blend Options',
-   ex:'Object > Blend > Blend Options에서 Specified Steps를 16으로 입력하면 정확한 단계 수로 블렌딩됩니다.'},
-  {q:'GPU 오류로 저장이 안 될 때 해결 방법은?',
-   opts:['프로그램 재설치','Ctrl+K > Performance > GPU Performance 체크 해제','파일을 삭제 후 재작업','Windows 재부팅'],
-   ans:1,cat:'shortcut',tip:'Ctrl+K(환경설정) → GPU Performance 해제',
-   ex:'GPU 관련 메모리 오류는 Ctrl+K > Performance에서 GPU Performance를 해제하면 대부분 해결됩니다.'},
-  {q:'패스파인더 Divide 기능의 결과는?',
-   opts:['모든 도형이 하나로 합쳐진다','교차 영역만 남는다','겹치는 선을 기준으로 독립 패스들이 분리된다','앞 도형이 뒤에서 제거된다'],
-   ans:2,cat:'skill',tip:'Divide: 겹치는 선 기준으로 분리',
-   ex:'Divide는 겹치는 모든 경계선을 기준으로 각각의 독립된 패스로 잘라냅니다. 리본, 분할 형태 제작에 유용해요.'},
-  {q:'색상 모드를 CMYK로 확인하는 메뉴는?',
-   opts:['View > Color Mode','Window > Color','File > Document Color Mode','Edit > Color Settings'],
-   ans:2,cat:'save',tip:'File > Document Color Mode > CMYK',
-   ex:'GTQi 시험은 CMYK 모드에서 작업해야 합니다. File > Document Color Mode를 확인하세요.'},
-  {q:'90분 시험에서 문제별 권장 시간 배분은?',
-   opts:['각 30분씩 균등','1번 40분 / 2번 30분 / 3번 20분','3번 35~45분 / 2번 25~30분 / 1번 15~25분','완성 순서대로'],
-   ans:2,cat:'strategy',tip:'배점 순: 3번 > 2번 > 1번',
-   ex:'배점이 높은 3번(40점)에 시간을 가장 많이 투자하고, 1번(25점)은 마지막에 남은 시간으로 처리합니다.'},
-  {q:'Envelope Distort로 문자를 아치형으로 휘게 만드는 메뉴는?',
-   opts:['Effect > Warp > Arc','Object > Envelope Distort > Make with Warp','Type > Create Outlines','Effect > 3D > Rotate'],
-   ans:1,cat:'skill',tip:'Object > Envelope Distort > Make with Warp',
-   ex:'문자 아웃라인 변환 없이도 Object > Envelope Distort > Make with Warp > Arc로 휘게 만들 수 있습니다.'},
-  {q:'실전 종료 5분 전 가장 중요한 행동은?',
-   opts:['새로운 효과 추가','Ctrl+S 최종 저장 + 파일명·위치 확인','오브젝트 추가 작업','색상 세부 조정'],
-   ans:1,cat:'strategy',tip:'마지막 5분: 저장 + 파일명 확인',
-   ex:'마지막 5분은 새 작업을 하는 게 아니라 Ctrl+S로 저장하고 파일명과 저장 위치를 최종 확인하는 데 써야 합니다.'},
-  {q:'펜툴(Pen Tool)로 부드러운 곡선을 만들려면?',
-   opts:['앵커 포인트를 클릭만 한다','클릭하며 드래그해서 베지어 핸들을 만든다','Shift 누르며 클릭','더블클릭'],
-   ans:1,cat:'skill',tip:'클릭 + 드래그: 베지어 핸들 생성',
-   ex:'펜툴로 클릭하며 드래그하면 베지어 핸들이 생성되어 부드러운 곡선 패스가 만들어집니다.'},
-  {q:'여러 오브젝트를 수직 중앙에 정렬하는 방법은?',
-   opts:['방향키로 하나씩 조정','변형 패널에서 Y 좌표 입력','Align 패널 > Vertical Align Center','눈금자 가이드에 맞추기'],
-   ans:2,cat:'skill',tip:'Window > Align 패널 사용',
-   ex:'Align 패널에서 수직 중앙 정렬을 클릭하면 선택된 모든 오브젝트가 한 번에 중앙 정렬됩니다.'},
-  {q:'GTQi 파일을 저장하는 올바른 위치와 형식은?',
-   opts:['바탕화면에 PNG로','아무 곳에나 저장 가능','Documents/GTQ 폴더에 .ai 파일로','이메일 첨부 파일로'],
-   ans:2,cat:'save',tip:'지정 폴더(Documents/GTQ)에 .ai 저장',
-   ex:'시험 감독관이 안내한 저장 경로(보통 Documents/GTQ)에 정확한 파일명으로 .ai 저장해야 합니다.'},
-  {q:'시험 중 화면에서 격자(Grid)가 갑자기 생겼습니다. 해결 방법은?',
-   opts:['View > Hide Grid 또는 Ctrl+"','Ctrl+;','Tab','ESC'],
-   ans:0,cat:'shortcut',tip:'Ctrl+" 또는 보기 > 격자 숨기기',
-   ex:'Ctrl+"를 누르면 격자가 표시/숨기기 됩니다. 시험 중 실수로 켜질 수 있으니 기억해두세요.'},
+   opts:['Window > Effects > Drop Shadow','Filter > Blur > Shadow','Object > Shadow','Effect > Stylize > Drop Shadow'],
+   correct:'Effect > Stylize > Drop Shadow',cat:'skill',w:1,tip:'Effect > Stylize > Drop Shadow',
+   ex:'Effect 메뉴 → Stylize → Drop Shadow로 적용합니다. Filter 메뉴와 혼동하지 마세요.'},
+  /* ── strat (w:1.5) ── */
+  {q:'시간이 부족할 때 가장 먼저 포기해야 하는 항목은?',
+   opts:['배점 요소인 Effect 적용','CMYK 색상 모드 설정','도형의 세밀한 디테일 완성','파일 저장'],
+   correct:'도형의 세밀한 디테일 완성',cat:'strat',w:1.5,tip:'채점은 기능 적용 여부 기준 — 디테일은 버려라',
+   ex:'채점은 완성도가 아닌 지정 기능(Brush, Effect, Clipping Mask 등) 적용 여부입니다. 디테일보다 조건을 먼저 챙기세요.'},
+  /* ── save (w:2) ── */
+  {q:'수험번호 12345678, 이름 홍길동이 3번 문제를 제출할 때 파일명은?',
+   opts:['홍길동_3번광고.ai','12345678_홍길동_수험과목.ai','3번_홍길동_12345678.ai','광고디자인_홍길동.ai'],
+   correct:'12345678_홍길동_수험과목.ai',cat:'save',w:2,tip:'수험번호_성명_수험과목.ai 형식',
+   ex:'수험과목명은 시험지에 명시된 정확한 명칭을 사용하세요. 수험번호_성명_수험과목.ai 형식을 반드시 지켜야 합니다.'},
+  /* ── shortcut (w:1.5) ── */
+  {q:'시험 중 도구 패널과 패널들이 전부 사라졌습니다. 복구 단축키는?',
+   opts:['Ctrl+Z (되돌리기)','F1 (도움말)','Tab (패널 전체 토글)','Ctrl+Y'],
+   correct:'Tab (패널 전체 토글)',cat:'short',w:1.5,tip:'Tab 키: 모든 패널 표시/숨기기',
+   ex:'Tab 키를 한 번 누르면 모든 패널이 복구됩니다. 다시 누르면 숨겨집니다.'},
+  {q:'Smart Guides를 켜고 끄는 단축키는?',
+   opts:['Ctrl+G','Ctrl+;','Ctrl+R','Ctrl+U'],
+   correct:'Ctrl+U',cat:'short',w:1.5,tip:'Ctrl+U: Smart Guides ON/OFF',
+   ex:'Ctrl+U를 누르면 Smart Guides가 켜지고 꺼집니다. 오브젝트 배치 시 자동 정렬 가이드를 보여줍니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Blend Tool에서 단계(Steps) 수를 정확히 16으로 설정하려면?',
+   opts:['Effect > Blend > Specified Steps','Window > Blend Options','Object > Blend > Blend Options > Specified Steps: 16','Edit > Blend Settings'],
+   correct:'Object > Blend > Blend Options > Specified Steps: 16',cat:'skill',w:1,tip:'Object > Blend > Blend Options',
+   ex:'Object > Blend > Blend Options에서 Specified Steps로 변경 후 16을 입력합니다.'},
+  /* ── shortcut (w:1.5) ── */
+  {q:'GPU 메모리 오류로 파일 저장이 되지 않을 때 해결 방법은?',
+   opts:['Illustrator 재설치','파일 삭제 후 처음부터 재작업','Ctrl+K > Performance > GPU Performance 체크 해제','Windows 재부팅'],
+   correct:'Ctrl+K > Performance > GPU Performance 체크 해제',cat:'short',w:1.5,tip:'Ctrl+K → Performance → GPU Performance 해제',
+   ex:'Ctrl+K(환경설정) → Performance 탭에서 GPU Performance를 해제하면 메모리 오류가 대부분 해결됩니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Pathfinder Divide 기능을 적용하면 어떻게 되나요?',
+   opts:['모든 도형이 하나로 합쳐진다','교차 영역만 남고 나머지 제거','겹치는 선을 기준으로 독립 패스들이 분리된다','앞 도형이 뒤에서 잘려나간다'],
+   correct:'겹치는 선을 기준으로 독립 패스들이 분리된다',cat:'skill',w:1,tip:'Divide: 경계선 기준 독립 패스 분리',
+   ex:'Divide는 겹치는 경계선을 따라 모든 오브젝트를 독립된 패스로 분리합니다. Ctrl+Shift+G로 그룹 해제 후 개별 색상 지정이 가능합니다.'},
+  /* ── cmyk (w:2) ── */
+  {q:'GTQi 시험 파일의 색상 모드를 CMYK로 확인하는 메뉴는?',
+   opts:['View > Color Mode','Edit > Color Settings','Window > Color','File > Document Color Mode'],
+   correct:'File > Document Color Mode',cat:'cmyk',w:2,tip:'File > Document Color Mode > CMYK 확인',
+   ex:'작업 시작 전 File > Document Color Mode에서 CMYK로 설정되어 있는지 반드시 확인하세요.'},
+  /* ── strat (w:1.5) ── */
+  {q:'GTQi 90분 시험에서 권장되는 문제별 시간 배분은?',
+   opts:['각 30분씩 균등 분배','1번 40분 → 2번 30분 → 3번 20분','3번 35~45분 → 2번 25~30분 → 1번 15~25분','푸는 속도대로 자유롭게'],
+   correct:'3번 35~45분 → 2번 25~30분 → 1번 15~25분',cat:'strat',w:1.5,tip:'배점 비율대로 시간 배분',
+   ex:'3번(40점)에 가장 많은 시간을 쓰고, 1번(25점)은 남은 시간에 처리합니다.'},
+  /* ── skill (w:1) ── */
+  {q:'문자를 아치형으로 휘게 만드는 메뉴는?',
+   opts:['Effect > Warp > Arc','Type > Create Outlines 후 변형','Effect > 3D > Rotate','Object > Envelope Distort > Make with Warp'],
+   correct:'Object > Envelope Distort > Make with Warp',cat:'skill',w:1,tip:'Object > Envelope Distort > Make with Warp > Arc',
+   ex:'Object > Envelope Distort > Make with Warp에서 Arc를 선택하면 문자를 아웃라인 변환 없이 휘게 만들 수 있습니다.'},
+  /* ── strat (w:1.5) ── */
+  {q:'시험 종료 5분 전, 아직 조건이 남아 있습니다. 어떻게 해야 할까요?',
+   opts:['남은 조건을 빠르게 추가 작업한다','Ctrl+S로 저장하고 파일명·경로를 최종 확인한다','새 오브젝트를 추가해 완성도를 높인다','색상을 조정해 완성도를 올린다'],
+   correct:'Ctrl+S로 저장하고 파일명·경로를 최종 확인한다',cat:'strat',w:1.5,tip:'마지막 5분: 저장 + 파일명 확인',
+   ex:'마지막 5분은 새 작업보다 파일 저장과 파일명·위치 확인에 써야 합니다. 저장 누락이 가장 큰 감점입니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Pen Tool로 부드러운 곡선 패스를 만드는 방법은?',
+   opts:['앵커 포인트를 여러 번 클릭한다','Shift 누르며 클릭해 직선을 연결한다','클릭하며 드래그해서 베지어 핸들을 만든다','더블클릭으로 곡선을 완성한다'],
+   correct:'클릭하며 드래그해서 베지어 핸들을 만든다',cat:'skill',w:1,tip:'클릭+드래그 = 베지어 핸들 생성',
+   ex:'펜툴을 클릭한 채 드래그하면 베지어 핸들이 생성되어 부드러운 곡선이 만들어집니다.'},
+  {q:'여러 오브젝트를 수직 방향 중앙 정렬하는 기능은?',
+   opts:['Ctrl+A 전체 선택 후 방향키','변형 패널에서 Y 좌표 입력','Window > Align 패널 > Vertical Align Center','눈금자 가이드에 수동으로 맞추기'],
+   correct:'Window > Align 패널 > Vertical Align Center',cat:'skill',w:1,tip:'Align 패널 > 수직 중앙 정렬',
+   ex:'Window > Align 패널에서 Vertical Align Center를 클릭하면 선택된 오브젝트가 모두 수직 중앙으로 정렬됩니다.'},
+  /* ── save (w:2) ── */
+  {q:'GTQi 파일을 저장할 때 올바른 위치와 형식은?',
+   opts:['바탕화면, PNG 형식','어디든 상관 없음, .ai 형식','Documents/GTQ 폴더, .ai 형식','이메일 첨부, PDF 형식'],
+   correct:'Documents/GTQ 폴더, .ai 형식',cat:'save',w:2,tip:'Documents/GTQ 폴더에 .ai 저장',
+   ex:'감독관이 안내한 경로(보통 Documents/GTQ)에 정확한 파일명으로 .ai 저장해야 합니다.'},
+  /* ── shortcut (w:1.5) ── */
+  {q:'시험 중 격자(Grid)가 갑자기 나타났습니다. 빠른 해결 방법은?',
+   opts:['View > Show Grid 클릭','Ctrl+; (안내선 토글)','Ctrl+" 또는 View > Hide Grid','Tab 키'],
+   correct:'Ctrl+" 또는 View > Hide Grid',cat:'short',w:1.5,tip:'Ctrl+": 격자 표시/숨기기',
+   ex:'Ctrl+"를 누르면 격자가 표시/숨기기 됩니다. 실수로 켜졌을 때 즉시 끌 수 있도록 기억해두세요.'},
+  /* ── p1 (w:1) ── */
+  {q:'GTQi 1번 문제(BI·CI 디자인)의 아트보드 크기는?',
+   opts:['100×80mm','210×297mm','100×100mm','160×120mm'],
+   correct:'100×100mm',cat:'p1',w:1,tip:'1번 아트보드: 100×100mm',
+   ex:'1번 문제(BI·CI)의 아트보드는 100×100mm입니다. 시작 전 반드시 아트보드 크기를 확인하세요.'},
+  /* ── p2 (w:1) ── */
+  {q:'GTQi 2번 문제(패키지·비즈니스 디자인)의 아트보드 크기는?',
+   opts:['100×100mm','210×297mm','150×100mm','160×120mm'],
+   correct:'160×120mm',cat:'p2',w:1,tip:'2번 아트보드: 160×120mm',
+   ex:'2번 문제(패키지)의 아트보드는 160×120mm입니다. 크기 오류는 즉시 감점 대상입니다.'},
+  /* ── p3 (w:1) ── */
+  {q:'GTQi 3번 문제(광고디자인)의 아트보드 크기는?',
+   opts:['100×100mm','160×120mm','A4 용지(210×297mm)','300×200mm'],
+   correct:'A4 용지(210×297mm)',cat:'p3',w:1,tip:'3번 아트보드: 210×297mm (A4)',
+   ex:'3번 문제(광고디자인)는 A4 크기인 210×297mm입니다. 가장 큰 아트보드이므로 먼저 설정하세요.'},
+  /* ── strat (w:1.5) ── */
+  {q:'GTQi 1번, 2번, 3번 문제의 배점은 각각 얼마인가요?',
+   opts:['30점 / 30점 / 40점','20점 / 40점 / 40점','25점 / 35점 / 40점','30점 / 35점 / 35점'],
+   correct:'25점 / 35점 / 40점',cat:'strat',w:1.5,tip:'1번:25점, 2번:35점, 3번:40점',
+   ex:'1번 25점, 2번 35점, 3번 40점으로 총 100점입니다. 배점이 높은 3번을 먼저 완성하는 전략이 유리합니다.'},
+  /* ── shortcut (w:1.5) ── */
+  {q:'텍스트를 벡터 패스로 변환하는 단축키는?',
+   opts:['Ctrl+Shift+O (Create Outlines)','Ctrl+T (Character 패널)','Ctrl+Shift+G','Ctrl+B'],
+   correct:'Ctrl+Shift+O (Create Outlines)',cat:'short',w:1.5,tip:'Ctrl+Shift+O: 문자 아웃라인',
+   ex:'텍스트를 Ctrl+Shift+O로 아웃라인 변환하면 벡터 패스가 됩니다. 서체가 없는 환경에서도 형태가 유지됩니다.'},
+  /* ── cmyk (w:2) ── */
+  {q:'인쇄용 작업에서 가장 진한 검정을 표현하는 CMYK 값은?',
+   opts:['C:0 M:0 Y:0 K:100','C:100 M:100 Y:100 K:0','C:100 M:100 Y:100 K:100','C:0 M:0 Y:0 K:0'],
+   correct:'C:0 M:0 Y:0 K:100',cat:'cmyk',w:2,tip:'순수 검정: K:100만 사용',
+   ex:'GTQi 시험에서 검정은 K:100(C0 M0 Y0 K100)으로 설정해야 합니다. 4색 혼합 검정은 잉크 번짐 위험이 있습니다.'},
+  /* ── skill (w:1) ── */
+  {q:'Pathfinder Unite 기능의 결과는?',
+   opts:['앞 도형 모양으로 뒤가 잘린다','겹치는 모든 도형이 하나의 패스로 합쳐진다','겹치는 영역만 남는다','겹치는 경계선으로 분리된다'],
+   correct:'겹치는 모든 도형이 하나의 패스로 합쳐진다',cat:'skill',w:1,tip:'Unite: 모든 도형을 하나로 합치기',
+   ex:'Unite는 선택된 모든 도형을 하나의 패스로 합칩니다. BI 로고처럼 여러 도형을 하나로 만들 때 사용합니다.'},
+  /* ── p3 (w:1) ── */
+  {q:'Symbol Sprayer 도구로 반복 배치한 오브젝트의 원본을 수정하는 방법은?',
+   opts:['직접 클릭해서 수정','Expand 후 개별 수정','Symbols 패널에서 원본 Symbol을 더블클릭해 편집','Symbol Instance를 선택하고 Edit > Edit Symbol'],
+   correct:'Symbols 패널에서 원본 Symbol을 더블클릭해 편집',cat:'p3',w:1,tip:'Symbol 편집: Symbols 패널에서 더블클릭',
+   ex:'Symbol Sprayer로 배치한 인스턴스는 원본 Symbol을 편집하면 모든 인스턴스가 동시에 업데이트됩니다.'},
+  /* ── cmyk (w:2) ── */
+  {q:'GTQi 제출 파일이 RGB 모드로 저장되었습니다. 어떻게 해야 할까요?',
+   opts:['RGB도 채점에 문제없다','색상 변환은 불필요하다','File > Document Color Mode > CMYK로 변경 후 다시 저장','Color 패널에서 색상을 다시 입력한다'],
+   correct:'File > Document Color Mode > CMYK로 변경 후 다시 저장',cat:'cmyk',w:2,tip:'CMYK 필수 — File > Document Color Mode',
+   ex:'GTQi는 CMYK 모드를 요구합니다. File > Document Color Mode > CMYK로 변경 후 Ctrl+S로 저장하세요.'},
+  /* ── p2 (w:1) ── */
+  {q:'패턴을 스와치에 등록하는 방법은?',
+   opts:['패턴 오브젝트를 그린 후 Object > Pattern > Make','패턴 오브젝트를 Swatches 패널로 드래그','File > Save As Pattern','Window > Pattern > Register'],
+   correct:'패턴 오브젝트를 Swatches 패널로 드래그',cat:'p2',w:1,tip:'패턴 등록: Swatches 패널로 드래그',
+   ex:'패턴으로 쓸 오브젝트를 그린 뒤 Window > Swatches 패널로 드래그하면 패턴 스와치로 등록됩니다.'},
+  /* ── p1 (w:1) ── */
+  {q:'Reflect Tool로 오브젝트를 정확히 수직 반사하려면?',
+   opts:['Object > Transform > Reflect','Reflect Tool 선택 후 기준점 클릭, Alt+클릭으로 대화상자 열기','Edit > Transform > Mirror','Effect > Distort > Reflect'],
+   correct:'Reflect Tool 선택 후 기준점 클릭, Alt+클릭으로 대화상자 열기',cat:'p1',w:1,tip:'Reflect Tool(O): Alt+클릭 → 대화상자',
+   ex:'Reflect Tool(단축키 O)을 선택하고 기준점에서 Alt+클릭하면 반사 옵션 대화상자가 열립니다.'},
+  /* ── strat (w:1.5) ── */
+  {q:'GTQi에서 절대 줄여서는 안 되는 작업 항목은?',
+   opts:['도형 디테일의 완성도','배경 색상의 정밀한 배합','파일 저장·파일명·CMYK·단위 설정','오브젝트 간 세밀한 간격 조정'],
+   correct:'파일 저장·파일명·CMYK·단위 설정',cat:'strat',w:1.5,tip:'저장·파일명·CMYK·mm는 절대 생략 금지',
+   ex:'시간이 부족해도 파일 저장, 파일명 형식, CMYK 모드, mm 단위는 반드시 확인해야 합니다. 이 항목들은 감점 비중이 높습니다.'},
+  /* ── p3 (w:1) ── */
+  {q:'Mesh Tool로 배경에 자연스러운 그라데이션을 만드는 방법은?',
+   opts:['Gradient 패널에서 다색 설정','Object > Blend > Make 사용','직사각형 선택 후 Mesh Tool(U)로 클릭해 메시 포인트 추가','Effect > Gradient Overlay 적용'],
+   correct:'직사각형 선택 후 Mesh Tool(U)로 클릭해 메시 포인트 추가',cat:'p3',w:1,tip:'Mesh Tool(U): 메시 포인트에 개별 색상 적용',
+   ex:'배경 직사각형을 만들고 Mesh Tool(U)로 클릭하면 메시 포인트가 생성됩니다. 각 포인트에 다른 색을 적용해 자연스러운 그라데이션을 만듭니다.'},
 ];
 
-let qState={qi:0,hp:3,score:0,answered:false,timer:null,timeLeft:30,correct:0,catWrong:{}};
+let qState={qi:0,hp:3,answered:false,timeLeft:30,correct:0,catWrong:{},shuffled:[],correctIdx:0,weakPool:null};
 
-function startQuiz(){
-  qState={qi:0,hp:3,score:0,answered:false,timer:null,timeLeft:30,correct:0,catWrong:{}};
+function startQuiz(pool){
+  const usePool=pool||QS;
+  qState={qi:0,hp:3,answered:false,timeLeft:30,correct:0,catWrong:{},shuffled:[],correctIdx:0,weakPool:pool||null};
+  qState._pool=[...usePool].sort(()=>Math.random()-.5);
   document.getElementById('quiz-start').style.display='none';
   document.getElementById('quiz-result').classList.remove('on');
   document.getElementById('quiz-result').style.display='none';
   const c=document.getElementById('quiz-container');
   c.classList.add('on');
   c.style.display='block';
+  document.getElementById('qi-score').textContent='0';
   renderQ();
 }
 
 function renderQ(){
-  const q=QS[qState.qi];
+  const q=qState._pool[qState.qi];
   qState.answered=false;
-  document.getElementById('qi-prog').textContent=(qState.qi+1)+' / '+QS.length;
+  const total=qState._pool.length;
+  document.getElementById('qi-prog').textContent=(qState.qi+1)+' / '+total;
   document.getElementById('qi-qnum').textContent='Q '+(qState.qi+1);
   const qt=document.getElementById('qi-qtext');
   qt.textContent=q.q;qt.classList.remove('shake');
@@ -1033,11 +1203,14 @@ function renderQ(){
   nb.classList.remove('show');
   const hp=document.getElementById('qi-hp');
   hp.textContent='❤️'.repeat(qState.hp)+'🤍'.repeat(3-qState.hp);
+  const shuffled=[...q.opts].sort(()=>Math.random()-.5);
+  qState.shuffled=shuffled;
+  qState.correctIdx=shuffled.indexOf(q.correct);
   document.getElementById('qi-opts').innerHTML=
     ['A','B','C','D'].map((k,i)=>
       `<button class="qi-opt" onclick="pickQ(${i})" id="qo${i}">
         <span class="qi-opt-key">${k}</span>
-        <span class="qi-opt-txt">${q.opts[i]}</span>
+        <span class="qi-opt-txt">${shuffled[i]}</span>
        </button>`
     ).join('');
   startTimer();
@@ -1063,38 +1236,33 @@ function updateTimer(t){
 }
 function timeUpQ(){
   qState.answered=true;qState.hp=Math.max(0,qState.hp-1);
-  const q=QS[qState.qi];
+  const q=qState._pool[qState.qi];
   document.querySelectorAll('.qi-opt').forEach(b=>b.disabled=true);
-  document.getElementById('qo'+q.ans).classList.add('ok');
+  document.getElementById('qo'+qState.correctIdx).classList.add('ok');
   document.getElementById('qi-qtext').classList.add('shake');
-  const cat=q.cat;
-  qState.catWrong[cat]=(qState.catWrong[cat]||0)+1;
+  qState.catWrong[q.cat]=(qState.catWrong[q.cat]||0)+1;
   showFB(false,'⏰ 시간 초과!',q.tip,q.ex);
 }
 function pickQ(i){
   if(qState.answered)return;
   qState.answered=true;
   clearInterval(timerIv);
-  const q=QS[qState.qi];
-  const ok=i===q.ans;
+  const q=qState._pool[qState.qi];
+  const ok=i===qState.correctIdx;
   document.querySelectorAll('.qi-opt').forEach(b=>b.disabled=true);
   document.getElementById('qo'+i).classList.add(ok?'ok':'no');
-  if(!ok)document.getElementById('qo'+q.ans).classList.add('ok');
+  if(!ok)document.getElementById('qo'+qState.correctIdx).classList.add('ok');
   if(ok){
     qState.correct++;
-    const bonus=Math.floor((qState.timeLeft/30)*50);
-    qState.score+=100+bonus;
-    const el=document.getElementById('qi-score');
-    el.textContent=qState.score;
-    spawnPop('+'+(100+bonus));
+    document.getElementById('qi-score').textContent=qState.correct;
+    spawnPop('✓');
   } else {
     qState.hp=Math.max(0,qState.hp-1);
     document.getElementById('qi-qtext').classList.add('shake');
-    const cat=q.cat;
-    qState.catWrong[cat]=(qState.catWrong[cat]||0)+1;
+    qState.catWrong[q.cat]=(qState.catWrong[q.cat]||0)+1;
   }
   document.getElementById('qi-hp').textContent='❤️'.repeat(qState.hp)+'🤍'.repeat(3-qState.hp);
-  showFB(ok,ok?'✅ '+q.tip:'❌ 틀렸습니다!',q.tip,q.ex);
+  showFB(ok,ok?'✅ 정답!':'❌ 틀렸습니다!',q.tip,q.ex);
 }
 function showFB(ok,msg,tip,ex){
   const fb=document.getElementById('qi-feedback');
@@ -1104,11 +1272,11 @@ function showFB(ok,msg,tip,ex){
   document.getElementById('qi-ex').textContent=ex;
   fb.classList.add('show');
   const nb=document.getElementById('qi-next');
-  nb.textContent=qState.qi===QS.length-1?'결과 보기 →':'다음 문항 →';
+  nb.textContent=qState.qi===qState._pool.length-1?'결과 보기 →':'다음 문항 →';
   nb.classList.add('show');
 }
 function nextQ(){
-  if(qState.qi===QS.length-1){showResult();return;}
+  if(qState.qi===qState._pool.length-1){showResult();return;}
   qState.qi++;renderQ();
 }
 function spawnPop(txt){
@@ -1121,43 +1289,114 @@ function spawnPop(txt){
 function showResult(){
   clearInterval(timerIv);
   document.getElementById('quiz-container').style.display='none';
-  const rate=Math.round(qState.correct/QS.length*100);
-  const TITLES=[
-    {min:96,grade:'S',title:'GTQi 실전형 에이스',color:'#00e5a0',desc:'완벽에 가까운 실력! 실전 투입 가능 수준입니다. 이미 GTQi 1급 합격 각 ✨'},
-    {min:88,grade:'A',title:'감점 방지 마스터',color:'#2d9cdb',desc:'핵심 감점 포인트를 거의 다 알고 있어요. 조금만 더 하면 S랭크 달성!'},
-    {min:76,grade:'A',title:'71점 전략가',color:'#ff7c2a',desc:'시험 전략을 정확히 이해하고 있습니다. 실전에서 71점 이상 충분히 가능!'},
-    {min:64,grade:'B',title:'효과 우선 생존자',color:'#9b51e0',desc:'효과·조건 우선 전략을 잘 이해했어요. 저장·파일명 규칙도 함께 익히면 완벽!'},
-    {min:52,grade:'B',title:'시간관리 훈련생',color:'#ffd700',desc:'개념은 알지만 실전 속도가 아직 부족해요. 모의시험 반복이 필요합니다!'},
-    {min:40,grade:'C',title:'조건 누락 사냥꾼',color:'#ff9f43',desc:'일부 조건을 놓치는 패턴이 있어요. 체크리스트 습관을 들이면 금방 올라가요!'},
-    {min:28,grade:'C',title:'Mask 탈출러',color:'#5ab8f5',desc:'클리핑 마스크·패스파인더 개념이 조금 헷갈리네요. ER 섹션을 복습해보세요.'},
-    {min:16,grade:'D',title:'저장 규칙 파수꾼',color:'#ff7f50',desc:'파일명과 저장 규칙부터 확실히 잡아야 해요. ER 카드를 수시로 확인하세요.'},
-    {min:0, grade:'D',title:'Pathfinder 입문자',color:'#888',desc:'아직 시작 단계입니다. 괜찮아요! 로드맵 01회차부터 차근차근 시작해봐요 💪'},
-  ];
-  const r=TITLES.find(t=>rate>=t.min)||TITLES[TITLES.length-1];
-  const badge=document.getElementById('qr-badge');
-  badge.textContent=r.grade;badge.style.color=r.color;badge.style.borderColor=r.color;
-  badge.style.boxShadow=`0 0 30px ${r.color}44`;
-  document.getElementById('qr-title').textContent=r.title;
-  document.getElementById('qr-title').style.color=r.color;
-  document.getElementById('qr-desc').textContent=r.desc;
-  document.getElementById('qr-correct').textContent=qState.correct+'/'+QS.length;
-  document.getElementById('qr-score').textContent=qState.score.toLocaleString();
-  document.getElementById('qr-rate').textContent=rate+'%';
-  document.getElementById('qr-diff').textContent='GTQi 실전 상황 퀴즈 (25문항)';
-  const wrongCount=Object.values(qState.catWrong).reduce((a,b)=>a+b,0);
-  const risk=wrongCount>=10?'🔴 높음 — 감점 위험 요소 다수'
-    :wrongCount>=5?'🟡 보통 — 일부 항목 재확인 필요'
-    :'🟢 낮음 — 핵심 감점 포인트 대부분 파악';
-  document.getElementById('qr-risk').textContent=risk;
-  const catNames={save:'저장/파일명',strategy:'시험 전략',shortcut:'단축키/ER',skill:'기능/기술'};
-  const topWeak=Object.entries(qState.catWrong).sort((a,b)=>b[1]-a[1])[0];
-  document.getElementById('qr-weak').textContent=topWeak?catNames[topWeak[0]]||topWeak[0]:'없음 — 균형 잡힌 실력!';
-  const reviewMap={save:'파일명 규칙 + 저장 경로 ER 카드 복습',strategy:'71점 생존 전략 섹션 재독',shortcut:'Illustrator ER 섹션 반복 학습',skill:'로드맵 관련 회차 실습'};
-  document.getElementById('qr-review').textContent=topWeak?reviewMap[topWeak[0]]||'ER 섹션 전체 복습':'현재 수준 유지 + 속도 향상 훈련';
-  const nextRec=rate>=76?'실전 모의시험(18~19회차) 도전':rate>=52?'기출 문제 유형(15~17회차) 풀기':'로드맵 순서대로 01회차부터 실습 시작';
-  document.getElementById('qr-next').textContent=nextRec;
+  const total=qState._pool.length;
+  const rate=Math.round(qState.correct/total*100);
+  const expectedScore=rate;
+  const passed=expectedScore>=71;
+
+  /* 가장 약한 카테고리 */
+  const catW={save:2,cmyk:2,strat:1.5,short:1.5,skill:1,p1:1,p2:1,p3:1};
+  const catNames={save:'저장·파일명',cmyk:'CMYK·색상',strat:'시험 전략',short:'단축키',skill:'기능·기술',p1:'1번 문제',p2:'2번 문제',p3:'3번 문제'};
+  const topWeak=Object.entries(qState.catWrong).sort((a,b)=>(b[1]*(catW[b[0]]||1))-(a[1]*(catW[a[0]]||1)))[0];
+  const weakCat=topWeak?topWeak[0]:null;
+
+  /* 칭호 결정 */
+  let title,color,reason;
+  if(rate>=90){title='GTQi 실전형 에이스';color='var(--ok)';reason='거의 모든 영역을 정확히 파악하고 있습니다. 실전에서도 충분히 합격 가능한 수준입니다.';}
+  else if(rate>=80&&weakCat!=='save'&&weakCat!=='cmyk'){title='감점 방지 마스터';color='var(--m2)';reason='핵심 채점 포인트를 대부분 알고 있습니다. 저장·CMYK 규칙을 한 번 더 점검하면 완벽합니다.';}
+  else if(rate>=71){title='71점 생존자';color='var(--m1)';reason='합격선을 통과할 수 있는 수준입니다. 약한 영역을 보완하면 안정적으로 합격권에 진입합니다.';}
+  else if(weakCat==='save'||weakCat==='cmyk'){title='저장 규칙 위험군';color='var(--no)';reason='저장·파일명·CMYK 관련 오답이 많습니다. 이 항목들은 감점 비중이 높으므로 집중 훈련이 필요합니다.';}
+  else if(weakCat==='short'){title='응급처치 훈련생';color='var(--co)';reason='단축키와 응급처치 영역이 약합니다. ER 섹션을 반복 학습하면 빠르게 개선됩니다.';}
+  else if(weakCat==='strat'){title='시간관리 훈련생';color='var(--m3)';reason='전략·시간 배분 개념이 약합니다. 71점 생존 전략 섹션을 다시 읽어보세요.';}
+  else{title='재도전 챌린저';color='var(--dm)';reason='전반적으로 더 많은 학습이 필요합니다. 로드맵 순서대로 차근차근 시작해보세요.';}
+
+  /* 감점 위험 계산 */
+  const saveWrong=(qState.catWrong['save']||0)+(qState.catWrong['cmyk']||0);
+  const penaltyRisk=Math.min(40,saveWrong*8);
+  const gap=passed?0:71-expectedScore;
+
+  /* 카테고리 분석 */
+  const allCats=['save','cmyk','strat','short','skill'];
+  const catTotal={};allCats.forEach(c=>{catTotal[c]=qState._pool.filter(q=>q.cat===c).length;});
+  const catCorrMap={};
+  allCats.forEach(c=>{
+    const tot=catTotal[c]||0;
+    const wrong=qState.catWrong[c]||0;
+    catCorrMap[c]={tot,corr:tot-wrong,wrong};
+  });
+
+  /* 피드백 3줄 */
+  const fb=[];
+  const bestCat=allCats.filter(c=>catTotal[c]>0).sort((a,b)=>{
+    const ra=(catCorrMap[a].tot?catCorrMap[a].corr/catCorrMap[a].tot:0);
+    const rb=(catCorrMap[b].tot?catCorrMap[b].corr/catCorrMap[b].tot:0);
+    return rb-ra;
+  })[0];
+  if(bestCat&&catCorrMap[bestCat].tot>0){
+    const pct=Math.round(catCorrMap[bestCat].corr/catCorrMap[bestCat].tot*100);
+    fb.push({dot:'var(--ok)',txt:`${catNames[bestCat]} 영역에서 ${pct}%를 맞혀 가장 강한 모습을 보였습니다.`});
+  }
+  if(saveWrong>0){
+    fb.push({dot:'var(--no)',txt:`저장·파일명·CMYK 오답이 ${saveWrong}개입니다. 이 항목들은 실전에서 즉시 감점 위험이 높으므로 반드시 재확인하세요.`});
+  }
+  if(weakCat&&catCorrMap[weakCat]&&catCorrMap[weakCat].tot>0){
+    fb.push({dot:'var(--co)',txt:`다음 훈련은 ${catNames[weakCat]} 영역의 약점 문제 재풀기를 권장합니다.`});
+  } else if(!weakCat){
+    fb.push({dot:'var(--m2)',txt:'모든 카테고리가 균형 잡혀 있습니다. 속도와 정확도를 높이는 반복 훈련을 진행하세요.'});
+  }
+
+  /* UI 렌더 */
+  const sumEl=document.getElementById('qr-summary');
+  sumEl.style.borderColor=color;
+  const ti=document.getElementById('qr-title');
+  ti.textContent=title;ti.style.color=color;
+  document.getElementById('qr-reason').textContent=reason;
+  const sv=document.getElementById('qr-score-val');
+  sv.textContent=expectedScore;sv.style.color=color;
+  const pb=document.getElementById('qr-pass-badge');
+  pb.textContent=passed?'합격권':'불합격권';
+  pb.style.background=passed?'rgba(0,158,106,.12)':'rgba(224,39,85,.1)';
+  pb.style.color=passed?'var(--ok)':'var(--no)';
+  pb.style.border=passed?'1px solid rgba(0,158,106,.25)':'1px solid rgba(224,39,85,.2)';
+
+  document.getElementById('qrm-correct').textContent=qState.correct+'/'+total;
+  document.getElementById('qrm-rate').textContent=rate+'%';
+  document.getElementById('qrm-risk').textContent=penaltyRisk>0?penaltyRisk+'점':'낮음';
+  document.getElementById('qrm-gap').textContent=passed?'통과':'−'+gap+'점';
+
+  /* 카테고리 바 */
+  const catsEl=document.getElementById('qr-cats');
+  catsEl.innerHTML='<div class="qr-cats-title">카테고리별 정답률</div>'+
+    allCats.filter(c=>catTotal[c]>0).map(c=>{
+      const d=catCorrMap[c];
+      const pct=d.tot?Math.round(d.corr/d.tot*100):0;
+      const col=pct>=80?'var(--ok)':pct>=60?'var(--co)':'var(--no)';
+      return `<div class="qr-cat-row">
+        <span class="qr-cat-name">${catNames[c]}</span>
+        <div class="qr-cat-bar-wrap"><div class="qr-cat-bar" style="width:${pct}%;background:${col}"></div></div>
+        <span class="qr-cat-stat" style="color:${col}">${d.corr}/${d.tot}</span>
+      </div>`;
+    }).join('');
+
+  /* 피드백 */
+  document.getElementById('qr-feedback').innerHTML=fb.map(f=>
+    `<div class="qr-fb-item"><div class="qr-fb-dot" style="background:${f.dot}"></div><div class="qr-fb-txt">${f.txt}</div></div>`
+  ).join('');
+
+  /* 약점 버튼 활성화 */
+  const weakBtn=document.getElementById('btn-weak');
+  if(weakBtn)weakBtn.style.display=weakCat?'inline-flex':'none';
+
   const res=document.getElementById('quiz-result');
   res.style.display='block';res.classList.add('on');
+}
+function retryWeak(){
+  const topWeak=Object.entries(qState.catWrong).sort((a,b)=>b[1]-a[1])[0];
+  if(!topWeak)return;
+  const weakCat=topWeak[0];
+  const weakQs=QS.filter(q=>q.cat===weakCat);
+  if(!weakQs.length)return;
+  startQuiz(weakQs);
 }
 function restartQuiz(){
   document.getElementById('quiz-result').classList.remove('on');
@@ -1169,7 +1408,7 @@ function backToStart(){
   document.getElementById('quiz-container').style.display='none';
   document.getElementById('quiz-result').classList.remove('on');
   document.getElementById('quiz-result').style.display='none';
-  document.getElementById('quiz-start').style.display='block';
+  document.getElementById('quiz-start').style.display='';
 }
 
 /* ── MISSION LAB ── */
@@ -1246,16 +1485,16 @@ function toggleTheme(){
   if(isDark){
     document.documentElement.removeAttribute('data-theme');
     localStorage.setItem('theme','light');
-    btn.textContent='Dark';
+    btn.textContent='🌙';
   }else{
     document.documentElement.setAttribute('data-theme','dark');
     localStorage.setItem('theme','dark');
-    btn.textContent='Light';
+    btn.textContent='☀️';
   }
 }
 window.addEventListener('DOMContentLoaded',function(){
   var btn=document.getElementById('theme-toggle');
-  if(btn&&document.documentElement.getAttribute('data-theme')==='dark')btn.textContent='Light';
+  if(btn&&document.documentElement.getAttribute('data-theme')==='dark')btn.textContent='☀️';
 });
 
 function selectDiff(d){
