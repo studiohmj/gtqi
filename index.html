@@ -574,9 +574,9 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
       <span class="nav-logo-text">GTQi 1급 합격 전략</span>
     </a>
     <div class="nav-links">
+      <a class="nav-link" href="#strategy">Strategy</a>
       <a class="nav-link" href="#mission">Mission</a>
       <a class="nav-link" href="#quiz">Quiz</a>
-      <a class="nav-link" href="#strategy">Strategy</a>
       <a class="nav-link" href="#er">ER</a>
       <a class="nav-link" href="#process">Roadmap</a>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
@@ -694,142 +694,6 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
   </div>
 </section>
 
-<!-- ER -->
-<section id="er" class="section" style="background:linear-gradient(180deg,rgba(45,156,219,.03) 0%,transparent 100%)">
-  <div class="wrap">
-    <span class="sec-label" style="color:var(--m2)">응급처치 카드</span>
-    <h2 class="sec-title">Illustrator ER</h2>
-    <p class="sec-desc">화면이 이상해졌을 때 누르는 응급처치 카드. 키워드를 입력하면 관련 카드만 표시됩니다.</p>
-    <div class="er-search-wrap">
-      <span class="er-si">🔍</span>
-      <input class="er-search" type="text" placeholder="증상 키워드 — 격자, 도구, 색, 저장, 핸들, 가이드, 단축키…" oninput="filterER(this.value)">
-    </div>
-    <div class="er-chips">
-      <button class="er-chip" onclick="chipFilter('화면')">화면</button>
-      <button class="er-chip" onclick="chipFilter('도구')">도구</button>
-      <button class="er-chip" onclick="chipFilter('색')">색</button>
-      <button class="er-chip" onclick="chipFilter('저장')">저장</button>
-      <button class="er-chip" onclick="chipFilter('핸들')">핸들</button>
-      <button class="er-chip" onclick="chipFilter('가이드')">가이드</button>
-      <button class="er-chip" onclick="chipFilter('단축키')">단축키</button>
-      <button class="er-chip" onclick="chipFilter('')">전체</button>
-    </div>
-    <div class="er-grid" id="er-grid">
-      <div class="er-card" data-tags="화면 아웃라인 하얀 선 하얗게"><div class="er-q">화면이 하얗게 변했어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Y</span></div></div>
-      <div class="er-card" data-tags="도구 툴바 패널 사라졌 없어"><div class="er-q">화면에 도구들이 다 사라졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Tab</span></div></div>
-      <div class="er-card" data-tags="단축키 키보드 한글 영어 안먹 입력"><div class="er-q">단축키가 안 먹어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">한/영 키 → 영어 입력으로 전환</span></div></div>
-      <div class="er-card" data-tags="격자 그리드 점선 배경 생겼"><div class="er-q">갑자기 격자가 생겼어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + " 또는 보기 › 격자 숨기기</span></div></div>
-      <div class="er-card" data-tags="대지 각도 기울기 아트보드 돌아"><div class="er-q">대지 각도가 돌아갔어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">ESC</span></div></div>
-      <div class="er-card" data-tags="안내선 가이드 선 숨김 안보여"><div class="er-q">안내선이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + ; 또는 보기 › 안내선 보이기</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="도구 툴박스 오브젝트 패널 안보여 박스"><div class="er-q">오브젝트 툴 박스가 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + B</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="가이드 스마트 자석 붙기 snap"><div class="er-q">스마트 가이드가 꺼졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + U (Smart Guides)</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="핸들 앵커 포인트 방향선 안보여"><div class="er-q">핸들이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + H</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="핸들 방향선 패스 엣지 안보여 디렉션"><div class="er-q">디렉션 라인이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + H (Show Edges)</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="색 컬러 회색 그레이 CMYK 바뀌 단축키"><div class="er-q">색이 회색으로 바뀌었어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Color 패널 메뉴 → CMYK로 변경</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="캡처 스크린샷 윈도우 화면 찍기"><div class="er-q">윈도우에서 창만 캡처하기</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Win + Shift + S</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="저장 메모리 오류 GPU 에러 안됩 단축키"><div class="er-q">메모리 오류로 저장이 안 됩니다</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + K → GPU Performance 체크 해제</span></div></div>
-      <div class="er-card er-collapsed hidden" data-tags="초기화 리셋 설정 실행 재시작 단축키"><div class="er-q">일러스트레이터 초기화</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Alt + Shift 누른 채 실행</span></div></div>
-      <div class="er-show-more" id="er-show-more"><button class="er-show-more-btn" onclick="toggleERAll()">전체 보기 (14개) ↓</button></div>
-      <div class="er-empty" id="er-empty">해당 키워드에 맞는 카드가 없습니다.</div>
-    </div>
-  </div>
-</section>
-
-<!-- SURVIVAL QUIZ -->
-<section id="quiz" class="section">
-  <div class="wrap">
-    <span class="sec-label" style="color:var(--m3)">실전 상황 퀴즈</span>
-    <h2 class="sec-title">Survival Quiz</h2>
-    <p class="sec-desc">파일명, 저장 경로, CMYK, mm 단위, 문제 순서, 단축키까지 — 실전 상황으로 배우는 GTQi 핵심 개념.</p>
-
-    <!-- Start Screen -->
-    <div id="quiz-start" class="quiz-start">
-      <button class="btn-p" onclick="startQuiz()" style="font-size:17px;padding:18px 48px">퀴즈 시작하기 →</button>
-      <div class="quiz-start-note">40문항 · 정답률로 예상 GTQi 점수 계산 · 키보드 A/B/C/D 지원</div>
-    </div>
-
-    <!-- Quiz Running -->
-    <div id="quiz-container" style="display:none">
-      <div class="qi-head">
-        <div class="qi-info">
-          <div class="qi-title" id="qi-title">GTQi Survival Quiz</div>
-          <div class="qi-prog" id="qi-prog">1 / 40</div>
-        </div>
-        <div class="qi-right">
-          <div class="qi-hp" id="qi-hp">❤️❤️❤️</div>
-          <div class="qi-score"><div class="qi-score-label">정답</div><div class="qi-score-val" id="qi-score">0</div></div>
-        </div>
-      </div>
-      <div class="qi-timer-wrap"><div class="qi-timer-bar" id="qi-timer"></div></div>
-      <div class="qi-qnum" id="qi-qnum">Q 1</div>
-      <div class="qi-qtext" id="qi-qtext"></div>
-      <div class="qi-opts" id="qi-opts"></div>
-      <div class="qi-feedback" id="qi-feedback">
-        <div class="qi-fb-top"><span class="qi-fb-verdict" id="qi-verdict"></span><span class="qi-fb-tip" id="qi-tip"></span></div>
-        <span id="qi-ex"></span>
-      </div>
-      <button class="qi-next" id="qi-next" onclick="nextQ()">다음 →</button>
-    </div>
-
-    <!-- Result -->
-    <div id="quiz-result">
-      <div class="qr-wrap">
-        <!-- 상단 요약 카드 -->
-        <div class="qr-summary" id="qr-summary">
-          <div class="qr-summary-top">
-            <div class="qr-title-area">
-              <div class="qr-title" id="qr-title"></div>
-              <div class="qr-reason" id="qr-reason"></div>
-            </div>
-            <div class="qr-score-area">
-              <div class="qr-score-val" id="qr-score-val"></div>
-              <div class="qr-score-lbl">예상 점수</div>
-              <div class="qr-pass-badge" id="qr-pass-badge"></div>
-            </div>
-          </div>
-        </div>
-        <!-- 성과 그리드 -->
-        <div class="qr-metrics">
-          <div class="qr-metric"><span class="qr-metric-val" id="qrm-correct" style="color:var(--ok)"></span><span class="qr-metric-lbl">정답 수</span></div>
-          <div class="qr-metric"><span class="qr-metric-val" id="qrm-rate" style="color:var(--m2)"></span><span class="qr-metric-lbl">정답률</span></div>
-          <div class="qr-metric"><span class="qr-metric-val" id="qrm-risk" style="color:var(--no)"></span><span class="qr-metric-lbl">감점위험</span></div>
-          <div class="qr-metric"><span class="qr-metric-val" id="qrm-gap" style="color:var(--co)"></span><span class="qr-metric-lbl">합격선까지</span></div>
-        </div>
-        <!-- 카테고리 분석 -->
-        <div class="qr-cats" id="qr-cats"></div>
-        <!-- 피드백 -->
-        <div class="qr-feedback" id="qr-feedback"></div>
-        <!-- 액션 -->
-        <div class="qr-btns">
-          <button class="btn-retry" onclick="restartQuiz()">↺ 다시 도전</button>
-          <button class="btn-retry btn-retry-weak" id="btn-weak" onclick="retryWeak()">약점만 다시 풀기</button>
-          <button class="btn-retry" onclick="location.href='#er'">ER 보기 →</button>
-        </div>
-        <div style="text-align:center;margin-top:16px">
-          <button class="btn-retry" style="font-size:12px;padding:8px 18px" onclick="backToStart()">← 처음으로</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CLASS PROCESS -->
-<section id="process" class="section">
-  <div class="wrap">
-    <span class="sec-label" style="color:var(--ok)">수업 진행 방식</span>
-    <h2 class="sec-title">Class Process</h2>
-    <p class="sec-desc">반복 실습과 피드백을 통해 실전 대응력과 완성도를 높이고 GTQi 1급 취득을 목표로 합니다.</p>
-    <div class="ps-wrap">
-      <div class="ps-line"></div>
-      <div class="ps-item active" onclick="setStep(0)"><div class="ps-node">📄</div><div class="ps-step">Step 01</div><div class="ps-name">2급 기출문제 풀이</div><div class="ps-desc">기초 기능 확인과 시험 유형 파악으로 시작합니다.</div></div>
-      <div class="ps-item" onclick="setStep(1)"><div class="ps-node">🎯</div><div class="ps-step">Step 02</div><div class="ps-name">1급 기출문제 풀이</div><div class="ps-desc">1급 수준의 실전 기출 유형을 직접 풀어봅니다.</div></div>
-      <div class="ps-item" onclick="setStep(2)"><div class="ps-node">⚡</div><div class="ps-step">Step 03</div><div class="ps-name">1급 TEST &amp; 피드백</div><div class="ps-desc">실전 테스트 후 개인별 취약점을 분석하고 피드백합니다.</div></div>
-      <div class="ps-item" onclick="setStep(3)"><div class="ps-node">🏆</div><div class="ps-step">Step 04</div><div class="ps-name">포스터 제작 실습</div><div class="ps-desc">수업 중 피드백 및 포스터 제작 등 창의적 실습을 진행합니다.</div></div>
-    </div>
-    <div class="ps-note"><strong>반복이 핵심입니다.</strong> 2급 → 1급 → 테스트 → 실습 사이클을 반복하며 각 학생의 약점을 좁혀갑니다. 실전 대응력과 완성도를 동시에 높여 GTQi 1급 합격을 목표로 합니다.</div>
-  </div>
-</section>
-
 <!-- MISSION LAB -->
 <section id="mission" class="section" style="background:linear-gradient(180deg,rgba(155,81,224,.04) 0%,transparent 100%)">
   <div class="wrap">
@@ -913,6 +777,142 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SURVIVAL QUIZ -->
+<section id="quiz" class="section">
+  <div class="wrap">
+    <span class="sec-label" style="color:var(--m3)">실전 상황 퀴즈</span>
+    <h2 class="sec-title">Survival Quiz</h2>
+    <p class="sec-desc">파일명, 저장 경로, CMYK, mm 단위, 문제 순서, 단축키까지 — 실전 상황으로 배우는 GTQi 핵심 개념.</p>
+
+    <!-- Start Screen -->
+    <div id="quiz-start" class="quiz-start">
+      <button class="btn-p" onclick="startQuiz()" style="font-size:17px;padding:18px 48px">퀴즈 시작하기 →</button>
+      <div class="quiz-start-note">40문항 · 정답률로 예상 GTQi 점수 계산 · 키보드 A/B/C/D 지원</div>
+    </div>
+
+    <!-- Quiz Running -->
+    <div id="quiz-container" style="display:none">
+      <div class="qi-head">
+        <div class="qi-info">
+          <div class="qi-title" id="qi-title">GTQi Survival Quiz</div>
+          <div class="qi-prog" id="qi-prog">1 / 40</div>
+        </div>
+        <div class="qi-right">
+          <div class="qi-hp" id="qi-hp">❤️❤️❤️</div>
+          <div class="qi-score"><div class="qi-score-label">정답</div><div class="qi-score-val" id="qi-score">0</div></div>
+        </div>
+      </div>
+      <div class="qi-timer-wrap"><div class="qi-timer-bar" id="qi-timer"></div></div>
+      <div class="qi-qnum" id="qi-qnum">Q 1</div>
+      <div class="qi-qtext" id="qi-qtext"></div>
+      <div class="qi-opts" id="qi-opts"></div>
+      <div class="qi-feedback" id="qi-feedback">
+        <div class="qi-fb-top"><span class="qi-fb-verdict" id="qi-verdict"></span><span class="qi-fb-tip" id="qi-tip"></span></div>
+        <span id="qi-ex"></span>
+      </div>
+      <button class="qi-next" id="qi-next" onclick="nextQ()">다음 →</button>
+    </div>
+
+    <!-- Result -->
+    <div id="quiz-result">
+      <div class="qr-wrap">
+        <!-- 상단 요약 카드 -->
+        <div class="qr-summary" id="qr-summary">
+          <div class="qr-summary-top">
+            <div class="qr-title-area">
+              <div class="qr-title" id="qr-title"></div>
+              <div class="qr-reason" id="qr-reason"></div>
+            </div>
+            <div class="qr-score-area">
+              <div class="qr-score-val" id="qr-score-val"></div>
+              <div class="qr-score-lbl">예상 점수</div>
+              <div class="qr-pass-badge" id="qr-pass-badge"></div>
+            </div>
+          </div>
+        </div>
+        <!-- 성과 그리드 -->
+        <div class="qr-metrics">
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-correct" style="color:var(--ok)"></span><span class="qr-metric-lbl">정답 수</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-rate" style="color:var(--m2)"></span><span class="qr-metric-lbl">정답률</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-risk" style="color:var(--no)"></span><span class="qr-metric-lbl">감점위험</span></div>
+          <div class="qr-metric"><span class="qr-metric-val" id="qrm-gap" style="color:var(--co)"></span><span class="qr-metric-lbl">합격선까지</span></div>
+        </div>
+        <!-- 카테고리 분석 -->
+        <div class="qr-cats" id="qr-cats"></div>
+        <!-- 피드백 -->
+        <div class="qr-feedback" id="qr-feedback"></div>
+        <!-- 액션 -->
+        <div class="qr-btns">
+          <button class="btn-retry" onclick="restartQuiz()">↺ 다시 도전</button>
+          <button class="btn-retry btn-retry-weak" id="btn-weak" onclick="retryWeak()">약점만 다시 풀기</button>
+          <button class="btn-retry" onclick="location.href='#er'">ER 보기 →</button>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="btn-retry" style="font-size:12px;padding:8px 18px" onclick="backToStart()">← 처음으로</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ER -->
+<section id="er" class="section" style="background:linear-gradient(180deg,rgba(45,156,219,.03) 0%,transparent 100%)">
+  <div class="wrap">
+    <span class="sec-label" style="color:var(--m2)">응급처치 카드</span>
+    <h2 class="sec-title">Illustrator ER</h2>
+    <p class="sec-desc">화면이 이상해졌을 때 누르는 응급처치 카드. 키워드를 입력하면 관련 카드만 표시됩니다.</p>
+    <div class="er-search-wrap">
+      <span class="er-si">🔍</span>
+      <input class="er-search" type="text" placeholder="증상 키워드 — 격자, 도구, 색, 저장, 핸들, 가이드, 단축키…" oninput="filterER(this.value)">
+    </div>
+    <div class="er-chips">
+      <button class="er-chip" onclick="chipFilter('화면')">화면</button>
+      <button class="er-chip" onclick="chipFilter('도구')">도구</button>
+      <button class="er-chip" onclick="chipFilter('색')">색</button>
+      <button class="er-chip" onclick="chipFilter('저장')">저장</button>
+      <button class="er-chip" onclick="chipFilter('핸들')">핸들</button>
+      <button class="er-chip" onclick="chipFilter('가이드')">가이드</button>
+      <button class="er-chip" onclick="chipFilter('단축키')">단축키</button>
+      <button class="er-chip" onclick="chipFilter('')">전체</button>
+    </div>
+    <div class="er-grid" id="er-grid">
+      <div class="er-card" data-tags="화면 아웃라인 하얀 선 하얗게"><div class="er-q">화면이 하얗게 변했어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Y</span></div></div>
+      <div class="er-card" data-tags="도구 툴바 패널 사라졌 없어"><div class="er-q">화면에 도구들이 다 사라졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Tab</span></div></div>
+      <div class="er-card" data-tags="단축키 키보드 한글 영어 안먹 입력"><div class="er-q">단축키가 안 먹어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">한/영 키 → 영어 입력으로 전환</span></div></div>
+      <div class="er-card" data-tags="격자 그리드 점선 배경 생겼"><div class="er-q">갑자기 격자가 생겼어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + " 또는 보기 › 격자 숨기기</span></div></div>
+      <div class="er-card" data-tags="대지 각도 기울기 아트보드 돌아"><div class="er-q">대지 각도가 돌아갔어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">ESC</span></div></div>
+      <div class="er-card" data-tags="안내선 가이드 선 숨김 안보여"><div class="er-q">안내선이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + ; 또는 보기 › 안내선 보이기</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="도구 툴박스 오브젝트 패널 안보여 박스"><div class="er-q">오브젝트 툴 박스가 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + B</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="가이드 스마트 자석 붙기 snap"><div class="er-q">스마트 가이드가 꺼졌어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + U (Smart Guides)</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="핸들 앵커 포인트 방향선 안보여"><div class="er-q">핸들이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Shift + H</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="핸들 방향선 패스 엣지 안보여 디렉션"><div class="er-q">디렉션 라인이 안 보여요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + H (Show Edges)</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="색 컬러 회색 그레이 CMYK 바뀌 단축키"><div class="er-q">색이 회색으로 바뀌었어요</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Color 패널 메뉴 → CMYK로 변경</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="캡처 스크린샷 윈도우 화면 찍기"><div class="er-q">윈도우에서 창만 캡처하기</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Win + Shift + S</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="저장 메모리 오류 GPU 에러 안됩 단축키"><div class="er-q">메모리 오류로 저장이 안 됩니다</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + K → GPU Performance 체크 해제</span></div></div>
+      <div class="er-card er-collapsed hidden" data-tags="초기화 리셋 설정 실행 재시작 단축키"><div class="er-q">일러스트레이터 초기화</div><div class="er-div"></div><div class="er-fix"><span class="er-fl">FIX</span><span class="er-fv">Ctrl + Alt + Shift 누른 채 실행</span></div></div>
+      <div class="er-show-more" id="er-show-more"><button class="er-show-more-btn" onclick="toggleERAll()">전체 보기 (14개) ↓</button></div>
+      <div class="er-empty" id="er-empty">해당 키워드에 맞는 카드가 없습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASS PROCESS -->
+<section id="process" class="section">
+  <div class="wrap">
+    <span class="sec-label" style="color:var(--ok)">수업 진행 방식</span>
+    <h2 class="sec-title">Class Process</h2>
+    <p class="sec-desc">반복 실습과 피드백을 통해 실전 대응력과 완성도를 높이고 GTQi 1급 취득을 목표로 합니다.</p>
+    <div class="ps-wrap">
+      <div class="ps-line"></div>
+      <div class="ps-item active" onclick="setStep(0)"><div class="ps-node">📄</div><div class="ps-step">Step 01</div><div class="ps-name">2급 기출문제 풀이</div><div class="ps-desc">기초 기능 확인과 시험 유형 파악으로 시작합니다.</div></div>
+      <div class="ps-item" onclick="setStep(1)"><div class="ps-node">🎯</div><div class="ps-step">Step 02</div><div class="ps-name">1급 기출문제 풀이</div><div class="ps-desc">1급 수준의 실전 기출 유형을 직접 풀어봅니다.</div></div>
+      <div class="ps-item" onclick="setStep(2)"><div class="ps-node">⚡</div><div class="ps-step">Step 03</div><div class="ps-name">1급 TEST &amp; 피드백</div><div class="ps-desc">실전 테스트 후 개인별 취약점을 분석하고 피드백합니다.</div></div>
+      <div class="ps-item" onclick="setStep(3)"><div class="ps-node">🏆</div><div class="ps-step">Step 04</div><div class="ps-name">포스터 제작 실습</div><div class="ps-desc">수업 중 피드백 및 포스터 제작 등 창의적 실습을 진행합니다.</div></div>
+    </div>
+    <div class="ps-note"><strong>반복이 핵심입니다.</strong> 2급 → 1급 → 테스트 → 실습 사이클을 반복하며 각 학생의 약점을 좁혀갑니다. 실전 대응력과 완성도를 동시에 높여 GTQi 1급 합격을 목표로 합니다.</div>
   </div>
 </section>
 
