@@ -136,18 +136,7 @@ html{scrollbar-gutter:stable}
   font-family:inherit;transition:transform .2s,box-shadow .2s;text-decoration:none;box-shadow:var(--shadow-sm);}
 .btn-s:hover{background:var(--card2);border-color:var(--bb);transform:translateY(-1px);box-shadow:var(--shadow-md)}
 /* Hero right: 2×2 dashboard grid */
-.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hcard{background:var(--card);border:1px solid var(--b);border-radius:16px;
-  padding:20px 20px 16px;display:flex;flex-direction:column;gap:0;
-  transition:all .2s;position:relative;overflow:hidden;}
-.hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:16px 16px 0 0;opacity:.6}
-.hcard:nth-child(1)::before{background:var(--m1)}.hcard:nth-child(2)::before{background:var(--m2)}
-.hcard:nth-child(3)::before{background:var(--m3)}.hcard:nth-child(4)::before{background:var(--ok)}
-.hcard:hover{border-color:var(--bb);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.hcard-ico{width:36px;height:36px;border-radius:10px;flex-shrink:0;margin-bottom:14px;
-  display:flex;align-items:center;justify-content:center;font-size:18px;}
-.hcard-lbl{font-size:10px;color:var(--dm);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
-.hcard-val{font-size:16px;font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hcard:nth-child(2)::before{background:var(--m2)}.hcard:nth-child(4)::before{background:var(--ok)}
 
 /* DIFFICULTY */
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -163,8 +152,6 @@ html{scrollbar-gutter:stable}
 .dcard-num{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
 .dc1 .dcard-num{color:var(--m1)}.dc2 .dcard-num{color:var(--m2)}.dc3 .dcard-num{color:var(--m3)}
 .dcard-title{font-size:19px;font-weight:900;letter-spacing:-.02em;margin-bottom:14px}
-.dtags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
-.dtag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;background:var(--hover-bg);border:1px solid var(--b);color:var(--dm);letter-spacing:-.01em}
 .dcard-pts{font-size:42px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
 .dc1 .dcard-pts{color:var(--m1)}.dc2 .dcard-pts{color:var(--m2)}.dc3 .dcard-pts{color:var(--m3)}
 .dcard-size{font-size:12px;color:var(--dm);font-weight:600}
@@ -209,48 +196,25 @@ html{scrollbar-gutter:stable}
 .rm-body{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start}
 .rm-phases{display:flex;flex-direction:column;gap:24px}
 .rm-phase-hd{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.rm-tag{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:6px;}
 .rp0 .rm-tag{background:rgba(255,124,42,.12);color:var(--m1);border:1px solid rgba(255,124,42,.2)}
 .rp1 .rm-tag{background:rgba(45,156,219,.12);color:var(--m2);border:1px solid rgba(45,156,219,.2)}
 .rp2 .rm-tag{background:rgba(155,81,224,.12);color:var(--m3);border:1px solid rgba(155,81,224,.2)}
 .rp3 .rm-tag{background:rgba(255,61,106,.12);color:var(--no);border:1px solid rgba(255,61,106,.2)}
 .rp4 .rm-tag{background:rgba(255,215,0,.12);color:var(--co);border:1px solid rgba(255,215,0,.2)}
 .rm-phase-sub{font-size:13px;font-weight:600;color:var(--dm)}
-.rm-items{display:flex;flex-wrap:wrap;gap:10px}
-.rm-item{background:var(--card);border:1px solid var(--b);border-radius:12px;
-  padding:13px 15px;width:148px;cursor:pointer;transition:all .2s;
-  display:flex;flex-direction:column;gap:4px;}
-.rm-item:hover,.rm-item.sel{transform:translateY(-2px)}
 .rp0 .rm-item:hover,.rp0 .rm-item.sel{border-color:rgba(255,124,42,.4);box-shadow:0 6px 20px rgba(255,124,42,.12)}
 .rp1 .rm-item:hover,.rp1 .rm-item.sel{border-color:rgba(45,156,219,.4);box-shadow:0 6px 20px rgba(45,156,219,.12)}
 .rp2 .rm-item:hover,.rp2 .rm-item.sel{border-color:rgba(155,81,224,.4);box-shadow:0 6px 20px rgba(155,81,224,.12)}
 .rp3 .rm-item:hover,.rp3 .rm-item.sel{border-color:rgba(255,61,106,.4);box-shadow:0 6px 20px rgba(255,61,106,.12)}
 .rp4 .rm-item:hover,.rp4 .rm-item.sel{border-color:rgba(255,215,0,.4);box-shadow:0 6px 20px rgba(255,215,0,.12)}
-.rm-n{font-size:10px;font-weight:800;letter-spacing:.08em;opacity:.5}
 .rp0 .rm-n{color:var(--m1)}.rp1 .rm-n{color:var(--m2)}.rp2 .rm-n{color:var(--m3)}.rp3 .rm-n{color:var(--no)}.rp4 .rm-n{color:var(--co)}
-.rm-t{font-size:11px;font-weight:700;line-height:1.4;color:var(--tx)}
-.rm-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;margin-top:4px;align-self:flex-start;}
 .bgtq1{background:rgba(255,124,42,.12);color:var(--m1)}
 .bgtq2{background:rgba(45,156,219,.12);color:var(--m2)}
 .bgtq3{background:rgba(155,81,224,.12);color:var(--m3)}
 .bexam{background:rgba(255,61,106,.12);color:var(--no)}
 .bmock{background:rgba(255,61,106,.15);color:var(--no)}
 .bfinal{background:rgba(255,215,0,.12);color:var(--co)}
-.rm-arrow{text-align:center;font-size:16px;color:var(--mt);padding:2px 0}
 /* detail panel */
-.rm-detail{background:var(--card);border:1px solid var(--bb);border-radius:18px;
-  padding:28px;position:sticky;top:calc(var(--nav-h) + 24px);
-  display:none;}
-.rm-detail.show{display:block;animation:slideUp .25s ease}
-.rm-detail-n{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--dm);margin-bottom:6px}
-.rm-detail-title{font-size:19px;font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
-.rm-detail-row{margin-bottom:14px}
-.rm-detail-key{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dm);margin-bottom:5px}
-.rm-detail-val{font-size:13px;font-weight:600;line-height:1.6;color:var(--tx)}
-.rm-detail-goal{background:rgba(45,156,219,.07);border:1px solid rgba(45,156,219,.15);
-  border-radius:10px;padding:14px;margin-top:12px;}
-.rm-detail-goal-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--m2);margin-bottom:5px}
-.rm-detail-goal-val{font-size:13px;color:var(--dm);line-height:1.6}
 .rm-placeholder{background:var(--card);border:1px dashed var(--b);border-radius:18px;
   padding:40px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;gap:12px;position:sticky;top:calc(var(--nav-h) + 24px);}
@@ -308,7 +272,6 @@ html{scrollbar-gutter:stable}
 .qi-prog{font-size:12px;color:var(--dm);font-weight:600}
 .qi-title{font-size:14px;font-weight:800}
 .qi-right{display:flex;align-items:center;gap:16px}
-.qi-hp{display:flex;gap:3px;font-size:18px}
 .qi-score{text-align:center}
 .qi-score-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dm)}
 .qi-score-val{font-size:24px;font-weight:900;color:var(--ok);transition:all .15s}
@@ -408,7 +371,6 @@ html{scrollbar-gutter:stable}
 
 @media(max-width:1200px){
   .rm-body{grid-template-columns:1fr}
-  .rm-detail,.rm-placeholder{position:static}
 }
 @media(max-width:1100px){
   .diff-grid,.strat-grid,.quiz-grid{grid-template-columns:1fr 1fr}
@@ -418,16 +380,63 @@ html{scrollbar-gutter:stable}
 }
 @media(max-width:720px){
   .section{padding:72px 24px}
-  .hero-inner{padding:48px 20px}
+  .hero-inner{padding:44px 20px}
   .hero-preview{grid-template-columns:1fr}
   .diff-grid,.strat-grid,.ps-wrap{grid-template-columns:1fr}
   .er-grid{grid-template-columns:1fr 1fr}
-  .nav{padding:0 20px}
+  .nav{padding:0 16px}
   .nav-logo-text{display:none}
   .time-alloc{grid-template-columns:1fr}
   .strat-grid,.strat-more{grid-template-columns:1fr}
+  .sec-desc{font-size:13px}
+  .hero-sub{font-size:15px}
+  .dcard-pts{font-size:32px}
 }
-@media(max-width:480px){.er-grid{grid-template-columns:1fr}}
+@media(max-width:480px){
+  .section{padding:52px 16px}
+  .hero-inner{padding:28px 16px}
+  .hero-sub{font-size:14px;margin-bottom:24px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .btn-p,.btn-s{justify-content:center;padding:13px 20px;font-size:13px}
+  .hero-stats{margin-bottom:20px}
+  .hero-stat{padding:12px 8px}
+  .hero-stat-val{font-size:18px}
+  .hero-stat-lbl{font-size:10px}
+  .hero-pcard{padding:16px 18px}
+  .hero-pcard-title{font-size:14px}
+  .hero-pcard-skills{font-size:11px}
+  .hero-preview{gap:8px}
+  .nav-link{padding:4px 8px;font-size:11px}
+  .sec-title{font-size:clamp(22px,6vw,30px)}
+  .sec-desc{font-size:13px;margin-bottom:28px}
+  .dcard{padding:18px 16px}
+  .dcard-pts{font-size:28px}
+  .dcard-size{font-size:12px}
+  .scard{padding:16px 14px}
+  .strat-toggle{font-size:12px;padding:10px 16px}
+  .er-grid{grid-template-columns:1fr}
+  .er-card{padding:16px 18px}
+  .qi-head{padding:11px 14px}
+  .qi-opt{padding:11px 14px;gap:10px}
+  .qi-opt-key{width:26px;height:26px;font-size:11px}
+  .qi-opt-txt{font-size:13px}
+  .qr-metrics{grid-template-columns:repeat(2,1fr)}
+  .ms-emg-row{grid-template-columns:1fr;gap:4px}
+  .ms-diff-grid{grid-template-columns:1fr 1fr}
+  .ms-emg-full{grid-column:1/-1}
+}
+@media(max-width:375px){
+  .hero-inner{padding:20px 14px}
+  .hero-h{font-size:32px}
+  .hero-sub{font-size:13px}
+  .hero-stat{padding:10px 6px}
+  .hero-stat-val{font-size:16px}
+  .hero-stat-lbl{font-size:9px}
+  .nav-link{padding:3px 7px;font-size:10.5px}
+  .sec-title{font-size:22px}
+  .ms-diff-grid{grid-template-columns:1fr}
+  .ms-emg-full{grid-column:auto}
+}
 
 /* ── MISSION LAB ── */
 .ms-diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
@@ -546,12 +555,6 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
 .ms-title-desc{font-size:11px;color:var(--dm);line-height:1.5}
 .ab-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--b)}
 .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
-.ab-card{background:var(--card);border:1px solid var(--b);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow-sm)}
-.ab-card-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m1);margin-bottom:10px;display:block}
-.ab-card-title{font-size:15px;font-weight:800;color:var(--tx);margin-bottom:12px}
-.ab-item{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--dm);padding:6px 0;border-bottom:1px solid var(--mt)}
-.ab-item:last-child{border-bottom:none}
-.ab-item-num{font-size:10px;font-weight:800;color:var(--dm);opacity:.6;min-width:16px}
 .save-4step{margin-top:20px;background:var(--card);border:1px solid rgba(255,124,42,.18);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm)}
 .save-4step-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m1);margin-bottom:12px;display:block}
 .save-4step-title{font-size:15px;font-weight:800;color:var(--tx);margin-bottom:16px}
@@ -582,7 +585,7 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
       <span class="nav-logo-text">GTQi 1급 합격 전략</span>
     </a>
     <div class="nav-links">
-      <a class="nav-link" href="#strategy">Strategy</a>
+      <a class="nav-link" href="#strategy">합격전략</a>
       <a class="nav-link" href="#mission">Mission</a>
       <a class="nav-link" href="#quiz">Quiz</a>
       <a class="nav-link" href="#er">문제 해결</a>
@@ -647,42 +650,11 @@ html[data-theme="dark"] .ms-check-item.done{background:rgba(0,229,160,.04);borde
 </section>
 
 <!-- DIFFICULTY -->
-<section id="difficulty" class="section">
-  <div class="wrap">
-    <span class="sec-label" style="color:var(--m2)">GTQi 1급 시험 구성</span>
-    <h2 class="sec-title">Exam Structure</h2>
-    <p class="sec-desc">GTQi 1급은 3문제로 구성됩니다. 배점과 아트보드 크기를 파악하고 풀이 순서 전략을 세우세요.</p>
-    <div class="diff-grid">
-      <div class="dcard dc1">
-        <div class="dcard-num">Problem 1</div>
-        <div class="dcard-title">BI·CI 디자인</div>
-        <div class="dtags"><span class="dtag">도형</span><span class="dtag">변형</span><span class="dtag">Pathfinder</span><span class="dtag">문자</span><span class="dtag">색상</span><span class="dtag">Stroke</span></div>
-        <div class="dcard-pts">25<span style="font-size:20px;font-weight:600;color:var(--dm)"> 점</span></div>
-        <div class="dcard-size">아트보드 100×80mm</div>
-      </div>
-      <div class="dcard dc2">
-        <div class="dcard-num">Problem 2</div>
-        <div class="dcard-title">패키지·비즈니스 디자인</div>
-        <div class="dtags"><span class="dtag">Pattern</span><span class="dtag">Clipping Mask</span><span class="dtag">Brush</span><span class="dtag">Effect</span><span class="dtag">문자</span><span class="dtag">레이아웃</span></div>
-        <div class="dcard-pts">35<span style="font-size:20px;font-weight:600;color:var(--dm)"> 점</span></div>
-        <div class="dcard-size">아트보드 160×120mm</div>
-      </div>
-      <div class="dcard dc3">
-        <div class="dcard-num">Problem 3</div>
-        <div class="dcard-title">광고디자인</div>
-        <div class="dtags"><span class="dtag">Symbol</span><span class="dtag">Envelope Distort</span><span class="dtag">Brush</span><span class="dtag">Effect</span><span class="dtag">Clipping Mask</span><span class="dtag">Blend</span></div>
-        <div class="dcard-pts">40<span style="font-size:20px;font-weight:600;color:var(--dm)"> 점</span></div>
-        <div class="dcard-size">아트보드 210×297mm</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 71 STRATEGY -->
 <section id="strategy" class="section" style="background:linear-gradient(180deg,rgba(255,124,42,.03) 0%,transparent 100%)">
   <div class="wrap">
-    <span class="sec-label" style="color:var(--m1)">시험 생존 전략</span>
-    <h2 class="sec-title">71점 생존 전략</h2>
+    <span class="sec-label" style="color:var(--m1)">GTQi 1급 합격전략</span>
+    <h2 class="sec-title">시험 합격전략</h2>
     <p class="sec-desc">GTQi 1급은 100점을 목표로 완벽하게 그리는 시험이 아닙니다.<br>제한시간 안에 감점 위험을 줄이고 배점 높은 조건을 챙겨 71점 이상을 확보하세요.</p>
     <div class="strat-grid">
       <div class="scard"><div class="scard-num">01</div><div class="scard-name">100점이 아닌 71점을 목표로</div><div class="scard-desc">완벽하게 완성하는 시험이 아닙니다. 71점 이상이면 합격. 감점을 줄이는 것이 핵심입니다.</div></div>
@@ -1126,17 +1098,17 @@ const QS=[
    ex:'Ctrl+"를 누르면 격자가 표시/숨기기 됩니다. 실수로 켜졌을 때 즉시 끌 수 있도록 기억해두세요.'},
   /* ── p1 (w:1) ── */
   {q:'GTQi 1번 문제(BI·CI 디자인)의 아트보드 크기는?',
-   opts:['100×80mm','210×297mm','100×100mm','160×120mm'],
+   opts:['100×80mm','210×297mm','100×80mm','160×120mm'],
    correct:'100×80mm',cat:'p1',w:1,tip:'1번 아트보드: 100×80mm',
    ex:'1번 문제(BI·CI)의 아트보드는 100×80mm입니다. 시작 전 반드시 아트보드 크기를 확인하세요.'},
   /* ── p2 (w:1) ── */
   {q:'GTQi 2번 문제(패키지·비즈니스 디자인)의 아트보드 크기는?',
-   opts:['100×100mm','210×297mm','150×100mm','160×120mm'],
+   opts:['100×80mm','210×297mm','150×100mm','160×120mm'],
    correct:'160×120mm',cat:'p2',w:1,tip:'2번 아트보드: 160×120mm',
    ex:'2번 문제(패키지)의 아트보드는 160×120mm입니다. 크기 오류는 즉시 감점 대상입니다.'},
   /* ── p3 (w:1) ── */
   {q:'GTQi 3번 문제(광고디자인)의 아트보드 크기는?',
-   opts:['100×100mm','160×120mm','A4 용지(210×297mm)','300×200mm'],
+   opts:['100×80mm','160×120mm','A4 용지(210×297mm)','300×200mm'],
    correct:'A4 용지(210×297mm)',cat:'p3',w:1,tip:'3번 아트보드: 210×297mm (A4)',
    ex:'3번 문제(광고디자인)는 A4 크기인 210×297mm입니다. 가장 큰 아트보드이므로 먼저 설정하세요.'},
   /* ── strat (w:1.5) ── */
@@ -1360,7 +1332,7 @@ function showResult(){
   else if(rate>=71){title='71점 생존자';color='var(--m1)';reason='합격선을 통과할 수 있는 수준입니다. 약한 영역을 보완하면 안정적으로 합격권에 진입합니다.';}
   else if(weakCat==='save'||weakCat==='cmyk'){title='저장 규칙 위험군';color='var(--no)';reason='저장·파일명·CMYK 관련 오답이 많습니다. 이 항목들은 감점 비중이 높으므로 집중 훈련이 필요합니다.';}
   else if(weakCat==='short'){title='단축키 훈련생';color='var(--co)';reason='단축키 영역이 약합니다. 문제 해결 카드를 반복 학습하면 빠르게 개선됩니다.';}
-  else if(weakCat==='strat'){title='시간 관리 훈련생';color='var(--m3)';reason='전략·시간 배분 개념이 약합니다. 71점 생존 전략 섹션을 다시 읽어보세요.';}
+  else if(weakCat==='strat'){title='시간 관리 훈련생';color='var(--m3)';reason='전략·시간 배분 개념이 약합니다. 시험 합격전략 섹션을 다시 읽어보세요.';}
   else{title='재도전 챌린저';color='var(--dm)';reason='전반적으로 더 많은 학습이 필요합니다. 로드맵 순서대로 차근차근 시작해보세요.';}
 
   /* 감점 위험 계산 */
@@ -1442,6 +1414,7 @@ function showResult(){
 
   const res=document.getElementById('quiz-result');
   res.style.display='block';res.classList.add('on');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function retryWeak(){
   const topWeak=Object.entries(qState.catWrong).sort((a,b)=>b[1]-a[1])[0];
@@ -1470,7 +1443,7 @@ const DIFF_META={
   hard:{ko:'감점 지옥',cls:'dch'},boss:{ko:'90분 생존',cls:'dcb'},emergency:{ko:'저장·응급',cls:'dcemg'}
 };
 const MISSIONS=[
-  {id:1,title:'도형 5개로 간단한 아이콘 만들기',diff:'easy',prob:'1번',time:7,skills:['도형','Align'],conditions:['아트보드 100×100mm 생성','기본 도형 5개 이상 사용','Align 패널로 정렬','CMYK 색상 설정'],penalty:'도형 수 5개 미만 감점 · 아트보드 단위 mm 미확인 감점',checklist:['아트보드 100×100mm 확인','도형 5개 이상 배치','Align 패널로 정렬','Fill CMYK 확인','파일 저장']},
+  {id:1,title:'도형 5개로 간단한 아이콘 만들기',diff:'easy',prob:'1번',time:7,skills:['도형','Align'],conditions:['아트보드 100×80mm 생성','기본 도형 5개 이상 사용','Align 패널로 정렬','CMYK 색상 설정'],penalty:'도형 수 5개 미만 감점 · 아트보드 단위 mm 미확인 감점',checklist:['아트보드 100×80mm 확인','도형 5개 이상 배치','Align 패널로 정렬','Fill CMYK 확인','파일 저장']},
   {id:2,title:'원과 사각형만 사용해 카페 로고 만들기',diff:'easy',prob:'1번',time:8,skills:['도형','Pathfinder'],conditions:['원·사각형만 사용','Pathfinder 1회 이상','색상 2개 이하'],penalty:'Pathfinder 미사용 감점 · 다른 도형 사용 금지',checklist:['원·사각형만 사용 확인','Pathfinder 적용','색상 2개 이하','정렬 확인','저장']},
   {id:3,title:'Pathfinder로 심볼 합치기',diff:'easy',prob:'1번',time:6,skills:['Pathfinder'],conditions:['Unite·Minus Front·Intersect 중 2가지 이상','결과 오브젝트 확인'],penalty:'Pathfinder 1가지만 사용 시 부분 감점',checklist:['Unite 적용','Minus Front 또는 Intersect 적용','결과 확인','저장']},
   {id:4,title:'텍스트 크기와 정렬 맞추기',diff:'easy',prob:'공통',time:5,skills:['Type Tool','Align'],conditions:['제목 24pt 이상','본문 10pt 이상','수직·수평 정렬'],penalty:'크기 미준수 감점 · 정렬 불일치 감점',checklist:['제목 24pt 이상','본문 10pt 이상','Align 중앙 정렬','Character 패널 확인','저장']},
@@ -1513,7 +1486,7 @@ const MISSIONS=[
   {id:41,title:'3번 광고디자인 40분 압축 미션',diff:'boss',prob:'3번',time:40,skills:['Envelope Distort','Blend','Effect','저장 규칙'],conditions:['아트보드 210×297mm','타이틀 왜곡','배경 Blend 또는 Mesh','파일명 규칙','40분 이내'],penalty:'파일명 오류 감점 · 시간 초과 시 조건 누락 위험',checklist:['아트보드 210×297mm','타이머 40분 시작','타이틀 왜곡','배경 효과 제작','CMYK 확인','파일명 규칙 저장']},
   {id:42,title:'3 → 2 → 1 순서로 실전 풀이하기',diff:'boss',prob:'전체',time:90,skills:['시간 관리','전 기능'],conditions:['3번 35~45분','2번 25~30분','1번 15~20분','전체 저장'],penalty:'순서 역행 시 시간 손실 · 저장 5분 반드시 확보',checklist:['3번 먼저 시작','3번 파일 저장','2번 작업 시작','2번 파일 저장','1번 완료 저장','전체 파일명 확인']},
   {id:43,title:'90분 모의시험 타이머로 전체 진행하기',diff:'boss',prob:'전체',time:90,skills:['전 기능','시간 관리','저장 규칙'],conditions:['타이머 90분','3문제 모두 완성','모든 파일 올바른 이름 저장'],penalty:'1문제 미완성 시 해당 배점 전체 감점',checklist:['타이머 90분 시작','3번 완성 저장','2번 완성 저장','1번 완성 저장','파일명 전체 확인','제출 전 Ctrl+S']},
-  {id:44,title:'71점 생존 전략으로 핵심 조건만 챙기기',diff:'boss',prob:'전체',time:60,skills:['전략','저장 규칙'],conditions:['조건 항목 우선 체크','디테일 포기 판단','파일명·CMYK·mm 확인'],penalty:'완성도 집착 시 시간 부족 · 전략적 포기 필요',checklist:['조건 항목 리스트 작성','Effect·Brush·Pattern 우선','디테일 포기 판단','CMYK 확인','파일명 확인','저장']},
+  {id:44,title:'시험 합격전략으로 핵심 조건만 챙기기',diff:'boss',prob:'전체',time:60,skills:['전략','저장 규칙'],conditions:['조건 항목 우선 체크','디테일 포기 판단','파일명·CMYK·mm 확인'],penalty:'완성도 집착 시 시간 부족 · 전략적 포기 필요',checklist:['조건 항목 리스트 작성','Effect·Brush·Pattern 우선','디테일 포기 판단','CMYK 확인','파일명 확인','저장']},
   {id:45,title:'문제 1, 2, 3 파일을 정확한 이름으로 저장하기',diff:'boss',prob:'전체',time:15,skills:['저장 규칙'],conditions:['3개 파일 각각 저장','수험번호_성명_수험과목.ai','Documents/GTQ'],penalty:'파일 1개 이름 오류 시 해당 문제 감점',checklist:['Documents/GTQ 확인','1번 파일명 저장','2번 파일명 저장','3번 파일명 저장','탐색기 3파일 확인','Ctrl+S 최종']},
   {id:46,title:'효과와 조건을 우선하고 디테일을 버리는 연습',diff:'boss',prob:'전체',time:45,skills:['전략','Effect','Brush'],conditions:['조건 항목 우선 완료','디테일 의도적 생략','30분 이내'],penalty:'완성도 집착으로 파일 미저장 최악 감점',checklist:['조건 항목만 체크','Effect·Pattern·Brush 처리','세부 작업 중단 판단','저장 규칙 확인','파일 저장']},
   {id:47,title:'45분 안에 문제 3의 핵심 요소 구성하기',diff:'boss',prob:'3번',time:45,skills:['Envelope Distort','Effect','Blend','Mesh'],conditions:['아트보드 210×297mm','타이틀 왜곡','배경 효과','Symbol 배치','45분 이내'],penalty:'시간 초과 시 저장 누락 최대 감점',checklist:['타이머 45분','아트보드 설정','타이틀 제작','배경 효과','Symbol 배치','파일명 확인 저장']},
